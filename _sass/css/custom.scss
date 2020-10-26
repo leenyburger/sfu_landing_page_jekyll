@@ -1,0 +1,19 @@
+.gradient {
+  background: linear-gradient(90deg, #B731DD 0%, #4161EB 100%);
+}
+
+.modal {
+  transition: opacity 0.25s ease;
+}
+body.modal-active {
+  overflow-x: hidden;
+  overflow-y: visible !important;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.show-me {
+  z-index: 99;
+}
