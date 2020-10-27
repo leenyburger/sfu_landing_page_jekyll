@@ -4,6 +4,7 @@
 
 .modal {
   transition: opacity 0.25s ease;
+  z-index: 100;
 }
 body.modal-active {
   overflow-x: hidden;
