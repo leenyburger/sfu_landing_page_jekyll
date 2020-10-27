@@ -1,5 +1,7 @@
+const jekyllEnv = process.env.JEKYLL_ENV || "development";
+
 module.exports = {
-  purge: ['./_site/**/*.html'],
+  purge: false,
   theme: {
     extend: {},
   },
