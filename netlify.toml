@@ -1,0 +1,36 @@
+[build]
+  command = "bundle exec jekyll build --verbose"
+  publish = "_site"
+
+[build.environment]
+  NODE_ENV="development"
+  NODE_VERSION = "12"
+  JEKYLL_ENV = "production"
+
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+[[headers]]
+  for = "*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Strict-Transport-Security = "max-age=15552000; includeSubDomains"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Cache-Control = "public, max-age=604800, s-max-age=604800"
+
+[[headers]]
+  for = "/*.(png|jpg|js|css|svg|woff|ttf|eot|ico|woff2)"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, s-max-age=31536000"
