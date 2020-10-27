@@ -1,6 +1,6 @@
 [build]
   command = "bundle exec jekyll build --verbose"
-  publish = "build"
+  publish = "_site"
 
 [build.environment]
   NODE_ENV="development"
