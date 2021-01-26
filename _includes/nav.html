@@ -15,8 +15,8 @@
       </button>
     </div>
 
-    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-      <ul class="list-reset lg:flex justify-end flex-1 items-center">
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center pb-4 lg:pb-0">
         <li class="mr-3">
           <a class="navLink inline-block py-2 px-4 text-gray-800 lg:text-white font-bold no-underline" href="https://app.simplefileupload.com/documentation">Documentation</a>
         </li>
@@ -55,7 +55,7 @@
           navaction.classList.add("text-white");
 
           navLink.forEach(link => {
-            link.classList.remove("text-white")
+            link.classList.remove("lg:text-white")
             link.classList.add("text-gray-800")
           });
 
@@ -76,7 +76,7 @@
 
           navLink.forEach(link => {
             link.classList.remove("text-gray-800")
-            link.classList.add("text-white")
+            link.classList.add("lg:text-white")
           });
 
           //Use to switch toggleColour colours
