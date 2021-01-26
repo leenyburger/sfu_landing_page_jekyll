@@ -18,7 +18,7 @@
     <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white bg-opacity-50 lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
       <ul class="list-reset lg:flex justify-end flex-1 items-center">
         <li class="mr-3">
-          <a class="inline-block py-2 px-4 text-white font-bold no-underline" href="https://app.simplefileupload.com/documentation">Documentation</a>
+          <a class="navLink inline-block py-2 px-4 text-white font-bold no-underline" href="https://app.simplefileupload.com/documentation">Documentation</a>
         </li>
         <li class="mr-3">
 <!--           <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">link</a> -->
@@ -39,6 +39,7 @@
       var header = document.getElementById("header");
       var navcontent = document.getElementById("nav-content");
       var navaction = document.getElementById("navAction");
+      var navLink = document.querySelectorAll(".navLink");
       var brandname = document.getElementById("brandname");
       var toToggle = document.querySelectorAll(".toggleColour");
 
@@ -52,6 +53,12 @@
           navaction.classList.add("gradient");
           navaction.classList.remove("text-gray-800");
           navaction.classList.add("text-white");
+
+          navLink.forEach(link => {
+            link.classList.remove("text-white")
+            link.classList.add("text-gray-800")
+          });
+
           //Use to switch toggleColour colours
           for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-gray-800");
@@ -66,6 +73,12 @@
           navaction.classList.add("bg-white");
           navaction.classList.remove("text-white");
           navaction.classList.add("text-gray-800");
+
+          navLink.forEach(link => {
+            link.classList.remove("text-gray-800")
+            link.classList.add("text-white")
+          });
+
           //Use to switch toggleColour colours
           for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-white");
