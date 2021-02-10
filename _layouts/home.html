@@ -11,15 +11,27 @@
 
 <section class="bg-white border-b py-8">
   <div class="container max-w-5xl mx-auto m-8">
-    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Seamless File Uploading</h1>
+    <h1 class="w-full my-2 text-4xl font-bold leading-tight text-center text-gray-800">Why?</h1>
     <div class="w-full mb-4">
       <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
     <div class="flex flex-wrap">
       <div class="w-5/6 sm:w-1/2 p-6">
-        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Streamlined UI</h3>
-        <p class="text-gray-600 mb-8">Building a file drop user interface is hard. The Simple File Upload widget automatically creates a straightforward UI that by default will blend with your form. File too big? The user is immediately notified and the dropped image is cleared.<br /><br />
+        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Ditch the pain and agony</h3>
+        <div class="text-gray-600 mb-8">Adding file uploads to your application is a pain. To do it yourself at a minimum you will need to: <br/><br/>
+          <ul class="pl-8 text-gray-600 list-disc">
+            <li>Securely configure a cloud storage service</li>
+            <li>Set up IAM credentials</li>
+            <li>Configure your client to send direct uploads</li>
+            <li>Create presigned URLs on your server </li>
+            <li>Configure your bucket CORS</li>
+            <li>Implement client and server-side validations</li>
+          </ul><br/>
+          Oh and don’t forget that you’ll need to make it look good and match the rest of your application.
+
+          You need uploading, but you don’t have time for that headache or want to manage that much infrastructure.
+        </div>
 
       </div>
       <div class="w-full sm:w-1/2 p-6 flex flex-row space-between">
@@ -34,16 +46,16 @@
       </div>
       <div class="w-full sm:w-1/2 p-6 mt-6">
         <div class="align-middle">
-          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Content Distribution Network (CDN)</h3>
-          <p class="text-gray-600 mb-8">Files uploaded and served using Simple File Upload are available quickly by using a world class CDN that delivers files based on the user's location. This improves a site's Lighthouse score and response time.<br /><br />
+          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">A Better Way</h3>
+          <p class="text-gray-600 mb-8">What if you didn’t have to do these things? What if you could just drop in a line of code, create a few file inputs, and have the files magically uploaded to the cloud for you? Simple File Upload can help you get there. With our product you will save time and headache.<br /><br />
         </div>
       </div>
     </div>
 
     <div class="flex flex-wrap">
       <div class="w-5/6 sm:w-1/2 p-6">
-        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Cloud Storage</h3>
-        <p class="text-gray-600 mb-8">Cloud storage for files is imperative in today's modern web world. Yet setting up cloud storage is a pain. CORS configuration, bucket permissions, signed upload urls...all of this takes precious developer time. Simple File Upload confgiures storage for you, to free you up to work on what's most important - your business. <br /><br />
+        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Enter Simple File Upload</h3>
+        <p class="text-gray-600 mb-8">Simple File Upload takes care of all the heavy lifting surrounding file uploads. The widget hooks into an input with class of simple-file-upload and replaces it with a dropzone. The user drops a file and the file is automatically uploaded to cloud storage via a direct upload. Files are served via a CDN which is imperitive in today's modern <br /><br />
       </div>
       <div class="w-full sm:w-1/2 p-6">
        <img class="w-5/6 sm:h-64 mx-auto" src="assets/server.svg"/>
@@ -56,8 +68,8 @@
       </div>
       <div class="w-full sm:w-1/2 p-6 mt-6">
         <div class="align-middle">
-          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Direct Uploads</h3>
-          <p class="text-gray-600 mb-8">Simple File Upload uses direct uploads, which means the file never touches your server.<br /><br />
+          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Will it work for me?</h3>
+          <p class="text-gray-600 mb-8">Yes! Simple File Upload can be installed via a javascript snippet or React component. It works will all backend languages and databases.<br /><br />
         </div>
       </div>
     </div>
