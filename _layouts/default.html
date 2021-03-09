@@ -4,11 +4,9 @@
   {%- include head.html -%}
 
   <body>
-
-    {%- include header.html -%}
-
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+    {%- include nav.html -%}
+    <main class="page-content pt-24" aria-label="Content">
+      <div class="container px-3 mx-auto">
         {{ content }}
       </div>
     </main>
