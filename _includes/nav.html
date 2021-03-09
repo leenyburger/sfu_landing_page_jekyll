@@ -1,5 +1,5 @@
 <!--Nav-->
-<nav id="header" class="fixed w-full z-30 top-0 text-white">
+<nav id="header" class="fixed w-full z-30 top-0 text-white gradient">
 
   <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
 
@@ -52,6 +52,7 @@
         scrollpos = window.scrollY;
 
         if (scrollpos > 10) {
+          header.classList.remove("gradient");
           header.classList.add("bg-white");
           navaction.classList.remove("bg-white");
           navaction.classList.add("gradient");
@@ -73,6 +74,7 @@
           navcontent.classList.add("bg-white");
         } else {
           header.classList.remove("bg-white");
+          header.classList.add("gradient");
           navaction.classList.remove("gradient");
           navaction.classList.add("bg-white");
           navaction.classList.remove("text-white");
