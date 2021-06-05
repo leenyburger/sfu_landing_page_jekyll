@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   theme: {
     extend: {
       spacing: {
@@ -32,5 +33,8 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [
+      // ...
+      require('@tailwindcss/typography'),
+     ]
 }
