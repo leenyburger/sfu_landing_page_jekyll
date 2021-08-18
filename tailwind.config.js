@@ -1,5 +1,15 @@
 module.exports = {
   important: true,
+  typography: (theme) => {
+    return {
+      default: {
+        css: {
+          "code::before": false,
+          "code::after": false,
+        }
+      }
+    }
+  },
   theme: {
     extend: {
       spacing: {
