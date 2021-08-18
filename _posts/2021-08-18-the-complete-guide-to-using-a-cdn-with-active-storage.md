@@ -79,7 +79,7 @@ The architecture for the complete DNS and CDN setup for the application will loo
 ## Configuring a CDN
 
 #### Select a CDN.
-For the purposes of this article we’ll use the Expedited CDN provided in the Heroku application store. We’ll also deploy the application with Heroku.
+For the purposes of this article we’ll use the [Expedited CDN](https://devcenter.heroku.com/articles/expeditedcdn) provided in the Heroku application store. We’ll also deploy the application with Heroku.
 
 #### If using Heroku, add your custom domain to your Heroku Application.
 This is available on the Settings tab of your Heroku application.
@@ -87,13 +87,13 @@ This is available on the Settings tab of your Heroku application.
 ![Custom Domain Heroku ](/assets/uploads/custom_domains_heroku_screenshot.png)
 
 #### Add the target to your DNS provider.
-Here’s an example of what that might look like with NameCheap as a DNS provider.
+After you add a custom domain with Heroku, Heroku will provide you a DNS record. Add this record to your domain's DNS configuration. Here’s an example of what that might look like with NameCheap as a DNS provider.
 
 ![DNS target](/assets/uploads/cname_screenshot.png)
 
 #### Complete the Setup of Expedited CDN or the CDN of your choice.
 
-Typically at this point you will be prompted by your CDN provider to add additional DNS records to start using the CDN. Expedited CDN with Heroku sets most of this up for you. The first step is to select the Heroku domain you would like to use with the CDN.
+Typically at this point you will be prompted by your CDN provider to add additional DNS records to start using the CDN. Expedited CDN with Heroku will provide a set of prompts to configure the service. The first step is to select the Heroku domain you would like to use with the CDN.
 
 ![Select Domain](/assets/uploads/select_domain_screenshot.png)
 
@@ -101,6 +101,8 @@ Typically at this point you will be prompted by your CDN provider to add additio
  After the DNS has resolved, follow the rest of the prompts to complete the CDN setup. Add the `CDN_HOST` as an environment variable on your production environment.
 ![Set up CDN prod on production](/assets/uploads/cdn_prod_var_on_heroku.png)
 
+If you are using a custom subdomain, add that subdomain either via your CDN provider or DNS directly and point the subdomain directly to your Rails application. 
+That's it! Once all the DNS changes have propagated the setup is complete.
 The very first time a file is requested the request will go through your Rails application, and subsequent requests will be served via the CDN.
 
 Here at Simple File Upload we've taken all of the pain out of this process and provide a drop in javascript widget to upload and serve files from a CDN *for you*. Try it free for 7 days!
