@@ -97,11 +97,11 @@ Typically at this point you will be prompted by your CDN provider to add additio
 
 ![Select Domain](/assets/uploads/select_domain_screenshot.png)
 
-#### Wait for the DNS to resolve.
- After the DNS has resolved, follow the rest of the prompts to complete the CDN setup. Add the `CDN_HOST` as an environment variable on your production environment.
-![Set up CDN prod on production](/assets/uploads/cdn_prod_var_on_heroku.png)
+Follow the prompts to add additional DNS records. 
 
-If you are using a custom subdomain, add that subdomain either via your CDN provider or DNS directly and point the subdomain directly to your Rails application. 
+#### Wait for the DNS to resolve.
+ After the DNS has resolved, complete the CDN setup. Add the `CDN_HOST` as an environment variable on your production environment.
+
 That's it! Once all the DNS changes have propagated the setup is complete.
 The very first time a file is requested the request will go through your Rails application, and subsequent requests will be served via the CDN.
 
