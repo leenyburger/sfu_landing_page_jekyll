@@ -4,8 +4,6 @@ backend:
 media_folder: "assets/uploads"
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    exension: "html"
-    format: "html"
     label: "Blog" # Used in the UI
     folder: "_posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
