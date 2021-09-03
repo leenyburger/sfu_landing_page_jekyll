@@ -1,0 +1,33 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<script src="https://app.simplefileupload.com/buckets/2e7792d9a1cfd35dbef192d26f5ed176.js"></script>
+
+<section class="tx-lg bg-white border-b py-8">
+  <div class="container max-w-5xl mx-auto m-8">
+    <h1 class="w-full my-2 text-4xl font-bold leading-tight text-center text-gray-800">Drop a file to try it live!</h1>
+     <div class="mt-8 flex flex-col items-center justify-center">
+      <form class="mb-8">
+        <input type="hidden" id="test-files-uploader" class="simple-file-upload"/>
+      </form>
+
+      <div class="text-gray-800 hidden text-center" id="snippet">
+        <p> Click to copy the URL of the uploaded file.<br> <span> You can also view
+        the URL in the console! </span>
+        </p>
+        <button id="file-url" class="mx-auto lg:mx-0 font-bold rounded-full mt-4 py-4 px-8 shadow opacity-75 gradient text-white"
+        alt="Copy to clipboard">
+          Copy file URL
+        </button>
+        <div class="hidden bg-white border-0 mb-3 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline rounded-lg"
+          id="tooltip-copied">
+          <div id="copy-tooltip" class="text-gray-800 text-bold bg-gray-100 p-3 mb-0 border border-solid rounded-lg">
+            Copied!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
