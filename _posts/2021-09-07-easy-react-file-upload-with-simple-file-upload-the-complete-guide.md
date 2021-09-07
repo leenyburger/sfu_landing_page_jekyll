@@ -23,11 +23,11 @@ We're going to keep this pretty barebones. We'll write some CSS, but the main fe
 
 I have a folder on my desktop where I keep all of my projects, so we'll start by cd-ing into that directory and running <i><mark style="background-color: lightgrey">npx create-react-app simple-file-uploader</mark></i> in the terminal.
 
-From there we're going to install Simple File Upload. They have a React package for it, so we'll just <mark style="background-color: lightgrey">npm install react-simple-file-upload</mark>, and voila- we have it ready to use.
+From there we're going to install Simple File Upload. They have a React package for it, so we'll just <i><mark style="background-color: lightgrey">npm install react-simple-file-upload</mark></i>, and voila- we have it ready to use.
 
 Simple File Upload is a paid solution, so you'll have to create an account and get an API key- which we'll use later in the project. Once we have all of that ready then we can jump into the code!
 
-Now let's get our local server running. In your terminal you want to <mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark> and then run <mark style="background-color: lightgrey">npm run start</mark>. Boom! Let's go!
+Now let's get our local server running. In your terminal you want to <i><mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark> and then run <mark style="background-color: lightgrey">npm run start</mark></i>. Boom! Let's go!
 
 ### Summary:
 
@@ -81,9 +81,9 @@ html
 </header>
 ```
 
-From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark> back in our App.js file.
+From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.
 
-And we'll go ahead and place the widget in the markup as well. Let's put in a <mark style="background-color: lightgrey">main</mark> tag to use as a wrapper for the uploader and our grid.
+And we'll go ahead and place the widget in the markup as well. Let's put in a <i><mark style="background-color: lightgrey">main</mark></i> tag to use as a wrapper for the uploader and our grid.
 
 One very important thing to note about the upload widget is the onSuccess attribute available. This is where you'll call the function you want to happen when a file is successfully uploaded.
 
@@ -118,7 +118,7 @@ function App() {
 export default App;
 ```
 
-You're probably seeing an error right now. Your project is probably yelling at you because <mark style="background-color: lightgrey">handleUpload</mark> doesn't exist. Let's fix that.
+You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.
 
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
@@ -177,9 +177,9 @@ Looks like we're almost done! All that's left is to get our uploaded images into
 
 Since we're not using a database in this project, the easiest way to accomplish this will be to store the image URLs in hook and have our UI display them all.
 
-Our next step is to add <mark style="background-color: lightgrey">import { useState } from 'react'</mark> at the top of our file. After that, we'll create the hook just below the line <mark style="background-color: lightgrey">function App() {</mark>.
+Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.
 
-We'll just call this uploadedImages. <mark style="background-color: lightgrey">const [uploadedImages, setUploadedImages] = useState([])</mark>.
+We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const [uploadedImages, setUploadedImages] = useState([])</mark></i>.
 
 Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
@@ -192,7 +192,7 @@ function handleUpload(url) {
 
 From there, we just need our front-end to map through the images and display them!
 
-Add this code just below your <mark style="background-color: lightgrey">.upload-wrapper</mark> div
+Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div
 
 ```
 javascript
