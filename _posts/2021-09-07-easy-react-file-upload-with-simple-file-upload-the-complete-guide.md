@@ -27,7 +27,7 @@ From there we're going to install Simple File Upload. They have a React package 
 
 Simple File Upload is a paid solution, so you'll have to create an account and get an API key- which we'll use later in the project. Once we have all of that ready then we can jump into the code!
 
-Now let's get our local server running. In your terminal you want to <i><mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark></i> and then run <mark style="background-color: lightgrey">npm run start</mark></i>. Boom! Let's go!
+Now let's get our local server running. In your terminal you want to <i><mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark></i> and then run <i><mark style="background-color: lightgrey">npm run start</mark></i>. Boom! Let's go!
 
 ### Summary:
 
