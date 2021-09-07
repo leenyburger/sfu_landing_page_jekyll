@@ -20,6 +20,7 @@ We're going to keep this pretty barebones. We'll write some CSS, but the main fe
 
 I have a folder on my desktop where I keep all of my projects, so we'll start by cd-ing into that directory and running <mark>npx create-react-app simple-file-uploader</mark>
 
+<mark style="background-color: lightgrey">npx create-react-app simple-file-uploader</mark>
 
 ```npx create-react-app simple-file-uploader``` in the terminal.
 
