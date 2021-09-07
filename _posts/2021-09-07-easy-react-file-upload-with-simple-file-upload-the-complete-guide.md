@@ -56,7 +56,7 @@ export default App;
 
 This gives us a clean base to work from and now we can get started building.
 
-I always like to come up with a definition of done list when I'm building out projects or features. This is simply a quick list of key functionality we want to ensure exists. In this app we want to be able to drop images into our Simple File Uploader and have them render in a grid below.
+I always like to come up with a definition of done list when I'm building out projects or features. This is simply a quick list of key functionality we want to ensure exists. In this app, we want to be able to drop images into our Simple File Uploader and have them render in the grid below.
 
 Our Definition of Done could look something like this:
 The simple file uploader widget is in the UI
@@ -126,9 +126,9 @@ function handleUpload(url) {
   }
 ```
 
-Now… upload a file! Did it work?! Sweet! So at this point our upload widget is functioning and we just need to build out our UI a little more.
+Now… upload a file! Did it work?! Sweet! So at this point, our upload widget is functioning and we just need to build out our UI a little more.
 
-So in very little code we've gotten a working drag-and-drop widget connected straight to Amazon S3 buckets. Isn't that wild? That simple. That quick.
+So in very little code, we've got a working drag-and-drop widget connected straight to Amazon S3 buckets. Isn't that wild? That simple. That quick.
 
 So now your file should be looking something like this.
 
@@ -273,6 +273,7 @@ css
   object-position: center;
 }
 ```
+
 ## What just happened?
 
 You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time)!
