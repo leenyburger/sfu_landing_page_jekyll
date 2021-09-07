@@ -34,7 +34,7 @@ Now let's get our local server running. In your terminal you want to <i><mark st
 1. npx create-react-app simple-file-uploader
 2. npm install react-simple-file-upload
 3. Create an account at simplefileupload.com and grab your API key
-4. CD into your project folder and run <mark style="background-color: lightgrey">npm run start</mark>
+4. CD into your project folder and run <i><mark style="background-color: lightgrey">npm run start</mark></i>
 
 ## Getting into the Code
 
