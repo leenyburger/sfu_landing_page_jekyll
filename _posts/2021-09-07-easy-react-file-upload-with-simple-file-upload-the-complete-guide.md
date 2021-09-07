@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "Easy React File Upload with Simple File Upload: The Complete Guide "
+title: "Easy React File Uploads with Simple File Upload: The Complete Guide "
 date: 2021-09-07T14:54:30.991Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
 excerpt: "Easy React file upload with Simple File Upload. "
