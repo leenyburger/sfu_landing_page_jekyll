@@ -13,7 +13,6 @@ Most devs know that nothing about S3 is easy. The pricing model is ambiguous at 
 That's where Simple File Upload comes in. Simple File Upload abstracts out the tough stuff so you can get to building the parts you love!
 
 Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.
-
 ## Setting up the Project
 We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!
 
