@@ -4,7 +4,7 @@ title: "Easy React File Uploads with Simple File Upload: The Complete Guide "
 date: 2021-09-07T14:54:30.991Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
 excerpt: "Easy React file upload with Simple File Upload. "
-permalink: /easy-react-file-upload
+permalink: easy-react-file-upload
 ---
 What would you say are the two most difficult things to do in front-end programming for you? State management? Data integrity? Those are valid choices, and there's plenty more that you could add, but for me -- the answer would be working with Amazon S3 and file uploads.
 
