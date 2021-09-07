@@ -14,7 +14,7 @@ That's where Simple File Upload comes in. Simple File Upload abstracts out the t
 
 Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.
 
-### Setting up the Project
+## Setting up the Project
 
 We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!
 
