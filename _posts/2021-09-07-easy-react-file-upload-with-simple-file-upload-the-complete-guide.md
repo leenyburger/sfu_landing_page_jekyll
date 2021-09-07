@@ -23,13 +23,11 @@ From there we're going to install Simple File Upload. They have a React package 
 Simple File Upload is a paid solution, so you'll have to create an account and get an API key- which we'll use later in the project. Once we have all of that ready then we can jump into the code!
 
 Now let's get our local server running. In your terminal you want to `cd YOUR_PROJECT_NAME` and then run `npm run start`. Boom! Let's go!
-
 ### Summary:
 1. npx create-react-app simple-file-uploader
 2. npm install react-simple-file-upload
 3. Create an account at simplefileupload.com and grab your API key
 4. CD into your project folder and run `npm run start`
-
 ## Getting into the Code
 First things first. Let's jump over to our App.js file and get rid of the react boilerplate.
 
@@ -267,7 +265,6 @@ css
   object-position: center;
 }
 ```
-
 ## What just happened?
 You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time)!
 
