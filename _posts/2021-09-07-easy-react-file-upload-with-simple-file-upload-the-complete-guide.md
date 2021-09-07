@@ -42,8 +42,7 @@ First things first. Let's jump over to our App.js file and get rid of the react 
 
 Strip it all of the way down until it looks like this.
 
-```
-javascript
+```javascript
 // App.js
 import './App.css';
 function App() {
@@ -169,9 +168,9 @@ export default App;
 
 Let's check our Definition of Done and see where we stand:
 
-- ~~The simple file uploader widget is in the UI~~
-- ~~The preview is disabled~~
-- The uploaded images render in a grid
+* ~~The simple file uploader widget is in the UI~~
+* ~~The preview is disabled~~
+* The uploaded images render in a grid
 
 Looks like we're almost done! All that's left is to get our uploaded images into a grid!
 
@@ -179,7 +178,7 @@ Since we're not using a database in this project, the easiest way to accomplish 
 
 Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.
 
-We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const [uploadedImages, setUploadedImages] = useState([])</mark></i>.
+We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \[uploadedImages, setUploadedImages] = useState(\[])</mark></i>.
 
 Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
