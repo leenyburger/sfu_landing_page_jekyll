@@ -69,7 +69,7 @@ We'll refer back to this as we build.
 
 Let's start by giving it a quick "website" feel with some content in the header.
 
-```
+```javascript
 html
 // App.js
 <header className="App-header">
@@ -88,7 +88,7 @@ One very important thing to note about the upload widget is the onSuccess attrib
 
 This is also where you'll receive access to the S3 generated URL for your asset. This is where you could push that URL to an array, write it to a database, package it up in an email- the sky's the limit.
 
-```
+```javascript
 javascript
 // App.js
 import './App.css';
@@ -121,7 +121,7 @@ You're probably seeing an error right now. Your project is probably yelling at y
 
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
-```
+```javascript
 javascript
 function handleUpload(url) {
    console.log(url)
@@ -134,7 +134,7 @@ So in very little code, we've got a working drag-and-drop widget connected strai
 
 So now your file should be looking something like this.
 
-```
+```javascript
 javascript
 // App.js
 import './App.css';
