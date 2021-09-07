@@ -20,18 +20,18 @@ We're going to keep this pretty barebones. We'll write some CSS, but the main fe
 
 I have a folder on my desktop where I keep all of my projects, so we'll start by cd-ing into that directory and running <mark style="background-color: lightgrey">npx create-react-app simple-file-uploader</mark> in the terminal.
 
-From there we're going to install Simple File Upload. They have a React package for it, so we'll just ```npm install react-simple-file-upload```, and voila- we have it ready to use.
+From there we're going to install Simple File Upload. They have a React package for it, so we'll just <mark style="background-color: lightgrey">npm install react-simple-file-upload</mark>, and voila- we have it ready to use.
 
 Simple File Upload is a paid solution, so you'll have to create an account and get an API key- which we'll use later in the project. Once we have all of that ready then we can jump into the code!
 
-Now let's get our local server running. In your terminal you want to ```cd YOUR_PROJECT_NAME``` and then run `npm run start`. Boom! Let's go!
+Now let's get our local server running. In your terminal you want to <mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark> and then run <mark style="background-color: lightgrey">npm run start</mark>. Boom! Let's go!
 
 ### Summary:
 
 1. npx create-react-app simple-file-uploader
 2. npm install react-simple-file-upload
 3. Create an account at simplefileupload.com and grab your API key
-4. CD into your project folder and run ```npm run start```
+4. CD into your project folder and run <mark style="background-color: lightgrey">npm run start</mark>
 
 ## Getting into the Code
 
@@ -78,9 +78,9 @@ html
 </header>
 ```
 
-From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add `import SimpleFileUpload from 'react-simple-file-upload'` back in our App.js file.
+From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark> back in our App.js file.
 
-And we'll go ahead and place the widget in the markup as well. Let's put in a `main` tag to use as a wrapper for the uploader and our grid.
+And we'll go ahead and place the widget in the markup as well. Let's put in a <mark style="background-color: lightgrey">main</mark> tag to use as a wrapper for the uploader and our grid.
 
 One very important thing to note about the upload widget is the onSuccess attribute available. This is where you'll call the function you want to happen when a file is successfully uploaded.
 
@@ -115,7 +115,7 @@ function App() {
 export default App;
 ```
 
-You're probably seeing an error right now. Your project is probably yelling at you because `handleUpload` doesn't exist. Let's fix that.
+You're probably seeing an error right now. Your project is probably yelling at you because <mark style="background-color: lightgrey">handleUpload</mark> doesn't exist. Let's fix that.
 
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
@@ -173,9 +173,10 @@ Let's check our Definition of Done and see where we stand:
 Looks like we're almost done! All that's left is to get our uploaded images into a grid!
 
 Since we're not using a database in this project, the easiest way to accomplish this will be to store the image URLs in hook and have our UI display them all.
-Our next step is to add `import { useState } from 'react'` at the top of our file. After that, we'll create the hook just below the line `function App() {`.
 
-We'll just call this uploadedImages. `const [uploadedImages, setUploadedImages] = useState([])`.
+Our next step is to add <mark style="background-color: lightgrey">import { useState } from 'react'</mark> at the top of our file. After that, we'll create the hook just below the line <mark style="background-color: lightgrey">function App() {</mark>.
+
+We'll just call this uploadedImages. <mark style="background-color: lightgrey">const [uploadedImages, setUploadedImages] = useState([])</mark>.
 
 Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
@@ -187,7 +188,8 @@ function handleUpload(url) {
 ```
 
 From there, we just need our front-end to map through the images and display them!
-Add this code just below your `.upload-wrapper` div
+
+Add this code just below your <mark style="background-color: lightgrey">.upload-wrapper</mark> div
 
 ```
 javascript
@@ -204,7 +206,7 @@ javascript
 </ul>
 ```
 
-There you go!! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!
+There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!
 
 The last step is to dress this up just a little bit.
 
@@ -272,6 +274,7 @@ css
 }
 ```
 ## What just happened?
+
 You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time)!
 
 So now the tough stuff is out of the way and you can go build the fun parts of your app!
