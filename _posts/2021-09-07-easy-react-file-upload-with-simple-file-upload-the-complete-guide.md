@@ -3,21 +3,19 @@ layout: blog
 title: "Easy React File Uploads with Simple File Upload: The Complete Guide "
 date: 2021-09-07T14:54:30.991Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
-excerpt: What would you say are the two most difficult things to do in front-end
-  programming for you? State management? Data integrity? Those are valid
-  choices, and there's plenty more that you could add, but for me -- the answer
-  would be working with Amazon S3 and file uploads.  Most devs know that nothing
-  about S3 is easy. The pricing model is ambiguous at best and the integration
-  can be an entire nightmare in and of itself. That's still only half of the
-  problem. What about the file upload? The input? Everyone expects drag-and-drop
-  these days but that's not really an easy thing to build, and again, only half
-  of the problem.  That's where Simple File Upload comes in. Simple File Upload
-  abstracts out the tough stuff so you can get to building the parts you
-  love!  Today we're going to build a quick file uploader with built-in S3
-  uploads using the React framework.
+excerpt: "What would you say are the two most difficult things to do in
+  front-end programming for you? State management? Data integrity? Those are
+  valid choices, and there's plenty more that you could add, but for me -- the
+  answer would be working with Amazon S3 and file uploads.  "
 permalink: easy-react-file-upload
 ---
 {{page.excerpt}}
+
+Most devs know that nothing about S3 is easy. The pricing model is ambiguous at best and the integration can be an entire nightmare in and of itself. That's still only half of the problem. What about the file upload? The input? Everyone expects drag-and-drop these days but that's not really an easy thing to build, and again, only half of the problem.  
+
+That's where Simple File Upload comes in. Simple File Upload abstracts out the tough stuff so you can get to building the parts you love!
+
+Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.
 
 ## Setting up the Project
 
