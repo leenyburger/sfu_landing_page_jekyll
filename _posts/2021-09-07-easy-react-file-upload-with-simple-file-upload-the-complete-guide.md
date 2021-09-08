@@ -57,16 +57,7 @@ We'll refer back to this as we build.
 
 Let's start by giving it a quick "website" feel with some content in the header.
 
-```javascript
-html
-// App.js
-<header className="App-header">
-  <h1>Simple File Upload Demo</h1>
-  <a className="btn" href="https://simplefileupload.com">
-    Try it now!
-  </a>
-</header>
-```
+![content in header](/assets/uploads/react_two_screenshot.png)
 
 From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.
 
@@ -76,45 +67,13 @@ One very important thing to note about the upload widget is the onSuccess attrib
 
 This is also where you'll receive access to the S3 generated URL for your asset. This is where you could push that URL to an array, write it to a database, package it up in an email- the sky's the limit.
 
-```javascript
-javascript
-// App.js
-import './App.css';
-import SimpleFileUpload from 'react-simple-file-upload';
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Simple File Upload Demo</h1>
-        <a className="btn" href="https://simplefileupload.com">
-          Try it now!
-        </a>
-      </header>
-      <main>
-        <div className="upload-wrapper">
-          <SimpleFileUpload
-            apiKey="YOUR_API_KEY_GOES_HERE"
-            onSuccess={handleUpload}
-            preview="false"
-          />
-        </div>
-      </main>
-    </div>
-  );
-}
-export default App;
-```
+![Add Simple File Upload widget to UI](/assets/uploads/react_three_screenshot.png)
 
 You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.
 
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
-```javascript
-javascript
-function handleUpload(url) {
-   console.log(url)
-  }
-```
+![console the URL](/assets/uploads/react_four_screenshot.png)
 
 Now… upload a file! Did it work?! Sweet! So at this point, our upload widget is functioning and we just need to build out our UI a little more.
 
@@ -122,8 +81,10 @@ So in very little code, we've got a working drag-and-drop widget connected strai
 
 So now your file should be looking something like this.
 
+![drag-and-drop widget](/assets/uploads/react_five_screenshot.png)
+
+````java
 ```javascript
-javascript
 // App.js
 import './App.css';
 import SimpleFileUpload from 'react-simple-file-upload';
@@ -153,6 +114,7 @@ function handleUpload(url) {
 }
 export default App;
 ```
+````
 
 Let's check our Definition of Done and see where we stand:
 
