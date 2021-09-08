@@ -114,7 +114,6 @@ The last step is to dress this up just a little bit.
 Move over to your App.css file and add the code below
 
 ```css
-css
 .App header {
   padding: 1rem 4rem;
   display: flex;
