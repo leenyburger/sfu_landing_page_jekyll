@@ -42,6 +42,8 @@ First things first. Let's jump over to our App.js file and get rid of the react 
 
 Strip it all of the way down until it looks like this.
 
+![Code 1](/assets/uploads/carbon-4.png "Code 1")
+
 ```javascript
 // App.js
 import './App.css';
