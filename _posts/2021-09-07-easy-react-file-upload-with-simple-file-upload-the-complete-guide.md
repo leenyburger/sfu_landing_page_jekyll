@@ -132,31 +132,13 @@ We'll just call this uploadedImages. <i><mark style="background-color: lightgrey
 
 Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
-```
-javascript
-function handleUpload(url) {
-    setUploadedImages([...uploadedImages, url])
-}
-```
+![set the images in our hook](/assets/uploads/react_six_screenshot.png)
 
 From there, we just need our front-end to map through the images and display them!
 
 Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div
 
-```
-javascript
-<ul className="image-grid">
-  {uploadedImages.length ? (
-    uploadedImages.map((image) => (
-      <li>
-        <img src={image} alt="Fun images" />
-      </li>
-    ))
-   ) : (
-   <p>Your uploaded images will appear here!</p>
- )}
-</ul>
-```
+![map front-end through images](/assets/uploads/react_seven_screenshot.png)
 
 There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!
 
