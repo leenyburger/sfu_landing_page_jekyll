@@ -42,7 +42,7 @@ First things first. Let's jump over to our App.js file and get rid of the react 
 
 Strip it all of the way down until it looks like this.
 
-![remove react boilerplate](/assets/uploads/carbon-4.png)
+![remove react boilerplate](/assets/uploads/screen-shot-2021-09-07-at-9.22.06-pm.png)
 
 This gives us a clean base to work from and now we can get started building.
 
