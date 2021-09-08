@@ -113,7 +113,7 @@ The last step is to dress this up just a little bit.
 
 Move over to your App.css file and add the code below
 
-![App.css code](/assets/uploads/react_seven_screenshot.png)
+![App.css code](/assets/uploads/carbon-8.png)
 
 ## What just happened?
 
