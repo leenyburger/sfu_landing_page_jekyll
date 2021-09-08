@@ -44,20 +44,6 @@ Strip it all of the way down until it looks like this.
 
 ![remove react boilerplate](/assets/uploads/carbon-4.png)
 
-```javascript
-// App.js
-import './App.css';
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
-}
-export default App;
-```
-
 This gives us a clean base to work from and now we can get started building.
 
 I always like to come up with a definition of done list when I'm building out projects or features. This is simply a quick list of key functionality we want to ensure exists. In this app, we want to be able to drop images into our Simple File Uploader and have them render in the grid below.
