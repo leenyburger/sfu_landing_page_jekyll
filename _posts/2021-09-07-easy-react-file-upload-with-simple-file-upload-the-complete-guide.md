@@ -83,39 +83,6 @@ So now your file should be looking something like this.
 
 ![drag-and-drop widget](/assets/uploads/react_five_screenshot.png)
 
-````java
-```javascript
-// App.js
-import './App.css';
-import SimpleFileUpload from 'react-simple-file-upload';
-function App() {
-function handleUpload(url) {
-   console.log(url)
-  }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Simple File Upload Demo</h1>
-        <a className="btn" href="https://simplefileupload.com">
-          Try it now!
-        </a>
-      </header>
-      <main>
-        <div className='upload-wrapper'>
-          <SimpleFileUpload
-            apiKey='YOUR_API_KEY_GOES_HERE'
-            onSuccess={handleUpload}
-            preview="false"
-          />
-        </div>
-      </main
-    </div>
-  );
-}
-export default App;
-```
-````
-
 Let's check our Definition of Done and see where we stand:
 
 * ~~The simple file uploader widget is in the UI~~
@@ -146,7 +113,7 @@ The last step is to dress this up just a little bit.
 
 Move over to your App.css file and add the code below
 
-```
+```css
 css
 .App header {
   padding: 1rem 4rem;
