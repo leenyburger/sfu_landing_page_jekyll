@@ -113,7 +113,7 @@ The last step is to dress this up just a little bit.
 
 Move over to your App.css file and add the code below
 
-![App.css code](/assets/uploads/carbon-8.png)
+![App.css code](/assets/uploads/screen-shot-2021-09-08-at-7.48.49-pm.png)
 
 ## What just happened?
 
