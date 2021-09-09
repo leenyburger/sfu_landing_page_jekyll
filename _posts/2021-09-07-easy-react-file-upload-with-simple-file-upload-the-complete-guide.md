@@ -94,7 +94,7 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.</p>
 
-<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\\\[])</mark></i>.</p>
+<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\\\\[])</mark></i>.</p>
 
 <p align="justify">Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.</p>
 
@@ -110,70 +110,7 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">The last step is to dress this up just a little bit. Move over to your App.css file and add the code below</p>
 
-
-
-```css
-.App header {
-  padding: 1rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.App header h1 {
-  font-size: 1.25rem;
-}
-.btn {
-  background: linear-gradient(90deg, #b731dd 0, #4161eb 100%);
-  padding: 0.5rem 1.25rem;
-  border-radius: 0.25rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  transition: 150ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  box-shadow: 5px 5px 10px rgba(17, 17, 17, 0.25);
-}
-.btn:hover {
-  transform: scale(1.05);
-}
-.App header a {
-  color: white;
-  text-decoration: none;
-}
-.App main {
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.App .upload-wrapper {
-  display: flex;
-  justify-content: center;
-}
-.App main .image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
-  row-gap: 6rem;
-  list-style: none;
-  margin-top: 6rem;
-  text-align: center;
-  padding-left: 0;
-}
-.image-grid p {
-  grid-column-start: 2;
-  opacity: 50%;
-}
-.image-grid li {
-  overflow: hidden;
-  height: 200px;
-}
-.image-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-```
-
-![App.css code](/assets/uploads/screen-shot-2021-09-08-at-7.48.49-pm.png)
+![App.css file code](/assets/uploads/react_eight.png)
 
 ## What just happened?
 
