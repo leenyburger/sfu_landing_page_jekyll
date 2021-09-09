@@ -72,11 +72,11 @@ Let's create that function just before your return statement. To quickly check t
 
 ![console the URL](/assets/uploads/react_four.png)
 
-<p align="justify">Now… upload a file! Did it work?! Sweet! So at this point, our upload widget is functioning and we just need to build out our UI a little more.</p>
+Now… upload a file! Did it work?! Sweet! So at this point, our upload widget is functioning and we just need to build out our UI a little more.
 
-<p align="justify">So in very little code, we've got a working drag-and-drop widget connected straight to Amazon S3 buckets. Isn't that wild? That simple. That quick.</p>
+So in very little code, we've got a working drag-and-drop widget connected straight to Amazon S3 buckets. Isn't that wild? That simple. That quick.
 
-<p align="justify">So now your file should be looking something like this.</p>
+So now your file should be looking something like this.
 
 ![drag-and-drop widget](/assets/uploads/react_five.png)
 
@@ -86,30 +86,30 @@ Let's check our Definition of Done and see where we stand:
 * ~~The preview is disabled~~
 * The uploaded images render in a grid
 
-<p align="justify">Looks like we're almost done! All that's left is to get our uploaded images into a grid!</p>
+Looks like we're almost done! All that's left is to get our uploaded images into a grid!
 
-<p align="justify">Since we're not using a database in this project, the easiest way to accomplish this will be to store the image URLs in hook and have our UI display them all.</p>
+Since we're not using a database in this project, the easiest way to accomplish this will be to store the image URLs in hook and have our UI display them all.
 
-<p align="justify">Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.</p>
+Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.
 
-<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \[uploadedImages, setUploadedImages] = useState(\[])</mark></i>.</p>
+We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \[uploadedImages, setUploadedImages] = useState(\[])</mark></i>.
 
-<p align="justify">Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.</p>
+Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
 ![store image URLs in hook](/assets/uploads/react_six.png)
 
-<p align="justify">From there, we just need our front-end to map through the images and display them!</p>
+From there, we just need our front-end to map through the images and display them!
 
-<p align="justify">Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div.</p>
+Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div.
 
 ![map front-end through images](/assets/uploads/react_seven.png)
 
-<p align="justify">There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!</p>
+There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!
 
-<p align="justify">The last step is to dress this up just a little bit. Move over to your App.css file and add the code below.</p>
+The last step is to dress this up just a little bit. Move over to your App.css file and add the code below.
 
 ![App.css file code](/assets/uploads/react_eight.png)
 
 ## What just happened?
 
-<p align="justify">You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time). React file uploads are easy with Simple File Upload, so you can focus on building the fun parts of your app!</p>
+You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time). React file uploads are easy with Simple File Upload, so you can focus on building the fun parts of your app!
