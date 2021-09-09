@@ -9,13 +9,13 @@ excerpt: "What would you say are the two most difficult things to do in
   answer would be working with Amazon S3 and file uploads.  "
 permalink: easy-react-file-upload
 ---
-<p align="justify">{{page.excerpt}}</p>
+{{page.excerpt}}
 
-<p align="justify">Most devs know that nothing about S3 is easy. The pricing model is ambiguous at best and the integration can be an entire nightmare in and of itself. That's still only half of the problem. What about the file upload? The input? Everyone expects drag-and-drop these days but that's not really an easy thing to build, and again, only half of the problem.</p> 
+Most devs know that nothing about S3 is easy. The pricing model is ambiguous at best and the integration can be an entire nightmare in and of itself. That's still only half of the problem. What about the file upload? The input? Everyone expects drag-and-drop these days but that's not really an easy thing to build, and again, only half of the problem.
 
-<p align="justify">That's where Simple File Upload comes in. Simple File Upload makes react file uploads easy so that you can get to building the parts you love!</p>
+That's where Simple File Upload comes in. Simple File Upload makes react file uploads easy so that you can get to building the parts you love!
 
-<p align="justify">Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.</p>
+Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.
 
 ## Setting up the Project
 
