@@ -48,9 +48,9 @@ permalink: easy-react-file-upload
 
 Our Definition of Done could look something like this:
 
-*The simple file uploader widget is in the UI
-*The preview is disabled
-*The uploaded images render in a grid
+* The simple file uploader widget is in the UI
+* The preview is disabled
+* The uploaded images render in a grid
 
 <p align="justify">We'll refer back to this as we build.</p>
 
