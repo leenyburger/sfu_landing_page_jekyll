@@ -40,7 +40,7 @@ permalink: easy-react-file-upload
 
 <p align="justify">First things first. Let's jump over to our App.js file and get rid of the react boilerplate. Strip it all of the way down until it looks like this.</p>
 
-<p align="center">![remove react boilerplate](/assets/uploads/react_one.png)</p>
+![remove react boilerplate](/assets/uploads/react_one.png)
 
 <p align="justify">This gives us a clean base to work from and now we can get started building.</p>
 
