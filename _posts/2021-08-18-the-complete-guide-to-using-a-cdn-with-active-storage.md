@@ -26,7 +26,11 @@ Open the “Network” tab in developer tools and request the resource again (i.
 
 ## Why is this important?
 
-A lot of the workarounds the community was doing prior to Rails 6.1 involved creating a direct URL using the object key and the desired CDN domain. There were a few problems with this. First of all, if you were serving public files from S3 the storage providers usually required the domain name and the bucket name be identical. This really became a problem if you were using wildcard subdomains. Also it made it tricker to switch storage providers. It was possible, but there were necessary DNS changes and the buckets still had to conform to the specified naming conventions. 
+A lot of the workarounds the community was doing prior to Rails 6.1 involved creating a direct URL using the object key and the desired CDN domain. There were a few problems with this. 
+
+First of all, if you were serving public files from S3 the storage providers usually required the domain name and the bucket name be identical. This really became a problem if you were using wildcard subdomains. 
+
+Also it made it tricker to switch storage providers. It was possible, but there were necessary DNS changes and the buckets still had to conform to the specified naming conventions. 
 
 With the new proxy feature switching storage providers is as easy as updating `storage.yml` in your rails application. You can also now easily use wildcard subdomains and have more freedom in naming your buckets.
 
