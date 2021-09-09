@@ -72,7 +72,7 @@ Our Definition of Done could look something like this:
 
 <p align="justify">Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.</p>
 
-![console the URL](/assets/uploads/react_four_screenshot.png)
+![console the URL](/assets/uploads/react_four.png)
 
 <p align="justify">Now… upload a file! Did it work?! Sweet! So at this point, our upload widget is functioning and we just need to build out our UI a little more.</p>
 
@@ -80,7 +80,7 @@ Our Definition of Done could look something like this:
 
 <p align="justify">So now your file should be looking something like this.</p>
 
-![drag-and-drop widget](/assets/uploads/react_five_screenshot.png)
+![drag-and-drop widget](/assets/uploads/react_five.png)
 
 Let's check our Definition of Done and see where we stand:
 
@@ -94,7 +94,7 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.</p>
 
-<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\[])</mark></i>.</p>
+<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\\[])</mark></i>.</p>
 
 <p align="justify">Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.</p>
 
