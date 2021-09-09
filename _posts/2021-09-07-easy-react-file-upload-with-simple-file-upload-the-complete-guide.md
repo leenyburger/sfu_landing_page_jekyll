@@ -94,7 +94,7 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.</p>
 
-<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\\\\[])</mark></i>.</p>
+<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \[uploadedImages, setUploadedImages] = useState(\[])</mark></i>.</p>
 
 <p align="justify">Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.</p>
 
