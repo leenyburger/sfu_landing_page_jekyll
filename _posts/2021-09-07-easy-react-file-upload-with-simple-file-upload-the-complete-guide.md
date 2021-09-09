@@ -17,9 +17,6 @@ permalink: easy-react-file-upload
 
 <p align="justify">Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.</p>
 
-## {
-  margin: 0;
-}
 ## Setting up the Project
 
 <p align="justify">We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!</p>
