@@ -9,17 +9,17 @@ excerpt: "What would you say are the two most difficult things to do in
   answer would be working with Amazon S3 and file uploads.  "
 permalink: easy-react-file-upload
 ---
-{{page.excerpt}}
+<p align="justify">{{page.excerpt}}
 
 Most devs know that nothing about S3 is easy. The pricing model is ambiguous at best and the integration can be an entire nightmare in and of itself. That's still only half of the problem. What about the file upload? The input? Everyone expects drag-and-drop these days but that's not really an easy thing to build, and again, only half of the problem.  
 
 That's where Simple File Upload comes in. Simple File Upload abstracts out the tough stuff so you can get to building the parts you love!
 
-Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.
+Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.</p>
 
 ## Setting up the Project
 
-We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!
+<p align="justify">We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!
 
 I have a folder on my desktop where I keep all of my projects, so we'll start by cd-ing into that directory and running <i><mark style="background-color: lightgrey">npx create-react-app simple-file-uploader</mark></i> in the terminal.
 
@@ -27,7 +27,7 @@ From there we're going to install Simple File Upload. They have a React package 
 
 Simple File Upload is a paid solution, so you'll have to create an account and get an API key- which we'll use later in the project. Once we have all of that ready then we can jump into the code!
 
-Now let's get our local server running. In your terminal you want to <i><mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark></i> and then run <i><mark style="background-color: lightgrey">npm run start</mark></i>. Boom! Let's go!
+Now let's get our local server running. In your terminal you want to <i><mark style="background-color: lightgrey">cd YOUR_PROJECT_NAME</mark></i> and then run <i><mark style="background-color: lightgrey">npm run start</mark></i>. Boom! Let's go!</p>
 
 ### Summary:
 
