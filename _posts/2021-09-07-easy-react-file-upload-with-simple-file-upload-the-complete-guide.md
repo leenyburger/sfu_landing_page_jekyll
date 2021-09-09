@@ -56,7 +56,7 @@ Our Definition of Done could look something like this:
 
 <p align="justify">Let's start by giving it a quick "website" feel with some content in the header.</p>
 
-![content in header](/assets/uploads/react_one.png)
+![content in header](/assets/uploads/react_two.png)
 
 <p align="justify">From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.</p>
 
@@ -66,7 +66,7 @@ Our Definition of Done could look something like this:
 
 <p align="justify">This is also where you'll receive access to the S3 generated URL for your asset. This is where you could push that URL to an array, write it to a database, package it up in an email- the sky's the limit.</p>
 
-![Add Simple File Upload widget to UI](/assets/uploads/react_two.png)
+![Add Simple File Upload widget to UI](/assets/uploads/react_three.png)
 
 <p align="justify">You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.</p>
 
