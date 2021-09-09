@@ -47,9 +47,10 @@ permalink: easy-react-file-upload
 <p align="justify">I always like to come up with a definition of done list when I'm building out projects or features. This is simply a quick list of key functionality we want to ensure exists. In this app, we want to be able to drop images into our Simple File Uploader and have them render in the grid below.</p>
 
 Our Definition of Done could look something like this:
-The simple file uploader widget is in the UI
-The preview is disabled
-The uploaded images render in a grid
+
+*The simple file uploader widget is in the UI
+*The preview is disabled
+*The uploaded images render in a grid
 
 <p align="justify">We'll refer back to this as we build.</p>
 
