@@ -94,17 +94,17 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.</p>
 
-<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\\[])</mark></i>.</p>
+<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \\\\\\\\\\[uploadedImages, setUploadedImages] = useState(\\\\\\\\\\[])</mark></i>.</p>
 
 <p align="justify">Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.</p>
 
-![set the images in our hook](/assets/uploads/react_six_screenshot.png)
+![store image URLs in hook](/assets/uploads/react_six.png)
 
 <p align="justify">From there, we just need our front-end to map through the images and display them!</p>
 
 <p align="justify">Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div</p>
 
-![map front-end through images](/assets/uploads/react_seven_screenshot.png)
+![map front-end through images](/assets/uploads/react_seven.png)
 
 <p align="justify">There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!</p>
 
