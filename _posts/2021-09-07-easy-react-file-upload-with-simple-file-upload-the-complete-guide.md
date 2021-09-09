@@ -16,7 +16,7 @@ permalink: easy-react-file-upload
 <p align="justify">That's where Simple File Upload comes in. Simple File Upload abstracts out the tough stuff so you can get to building the parts you love!</p>
 
 <p align="justify">Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.</p>
-"trim_automatic_white_space": true
+
 ## Setting up the Project
 
 <p align="justify">We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!</p>
