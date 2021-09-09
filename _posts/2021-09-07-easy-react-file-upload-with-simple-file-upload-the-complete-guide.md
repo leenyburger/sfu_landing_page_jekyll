@@ -52,9 +52,7 @@ Our Definition of Done could look something like this:
 * The preview is disabled
 * The uploaded images render in a grid
 
-<p align="justify">We'll refer back to this as we build.</p>
-
-<p align="justify">Let's start by giving it a quick "website" feel with some content in the header.</p>
+<p align="justify">We'll refer back to this as we build. Let's start by giving it a quick "website" feel with some content in the header.</p>
 
 ![content in header](/assets/uploads/react_two.png)
 
@@ -94,7 +92,7 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.</p>
 
-<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const [uploadedImages, setUploadedImages] = useState([])</mark></i>.</p>
+<p align="justify">We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \[uploadedImages, setUploadedImages] = useState(\[])</mark></i>.</p>
 
 <p align="justify">Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.</p>
 
@@ -102,18 +100,16 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">From there, we just need our front-end to map through the images and display them!</p>
 
-<p align="justify">Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div</p>
+<p align="justify">Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div.</p>
 
 ![map front-end through images](/assets/uploads/react_seven.png)
 
 <p align="justify">There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!</p>
 
-<p align="justify">The last step is to dress this up just a little bit. Move over to your App.css file and add the code below</p>
+<p align="justify">The last step is to dress this up just a little bit. Move over to your App.css file and add the code below.</p>
 
 ![App.css file code](/assets/uploads/react_eight.png)
 
 ## What just happened?
 
-<p align="justify">You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time)!</p>
-
-<p align="justify">React file uploads are easy with Simple File Upload, so you can focus on building the fun parts of your app!</p>
+<p align="justify">You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time). React file uploads are easy with Simple File Upload, so you can focus on building the fun parts of your app!</p>
