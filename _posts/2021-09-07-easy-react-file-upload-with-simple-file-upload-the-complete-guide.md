@@ -38,13 +38,13 @@ Now let's get our local server running. In your terminal you want to <i><mark st
 
 ## Getting into the Code: Easy React File Uploads
 
-<p align="justify">First things first. Let's jump over to our App.js file and get rid of the react boilerplate. Strip it all of the way down until it looks like this.</p>
+First things first. Let's jump over to our App.js file and get rid of the react boilerplate. Strip it all of the way down until it looks like this.
 
 ![remove react boilerplate](/assets/uploads/react_one.png)
 
-<p align="justify">This gives us a clean base to work from and now we can get started building.</p>
+This gives us a clean base to work from and now we can get started building.
 
-<p align="justify">I always like to come up with a definition of done list when I'm building out projects or features. This is simply a quick list of key functionality we want to ensure exists. In this app, we want to be able to drop images into our Simple File Uploader and have them render in the grid below.</p>
+I always like to come up with a definition of done list when I'm building out projects or features. This is simply a quick list of key functionality we want to ensure exists. In this app, we want to be able to drop images into our Simple File Uploader and have them render in the grid below.
 
 Our Definition of Done could look something like this:
 
@@ -52,23 +52,23 @@ Our Definition of Done could look something like this:
 * The preview is disabled
 * The uploaded images render in a grid
 
-<p align="justify">We'll refer back to this as we build. Let's start by giving it a quick "website" feel with some content in the header.</p>
+We'll refer back to this as we build. Let's start by giving it a quick "website" feel with some content in the header.
 
 ![content in header](/assets/uploads/react_two.png)
 
-<p align="justify">From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.</p>
+From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.
 
-<p align="justify">And we'll go ahead and place the widget in the markup as well. Let's put in a <i><mark style="background-color: lightgrey">main</mark></i> tag to use as a wrapper for the uploader and our grid.</p>
+And we'll go ahead and place the widget in the markup as well. Let's put in a <i><mark style="background-color: lightgrey">main</mark></i> tag to use as a wrapper for the uploader and our grid.
 
-<p align="justify">One very important thing to note about the upload widget is the onSuccess attribute available. This is where you'll call the function you want to happen when a file is successfully uploaded.</p>
+One very important thing to note about the upload widget is the onSuccess attribute available. This is where you'll call the function you want to happen when a file is successfully uploaded.
 
-<p align="justify">This is also where you'll receive access to the S3 generated URL for your asset. This is where you could push that URL to an array, write it to a database, package it up in an email- the sky's the limit.</p>
+This is also where you'll receive access to the S3 generated URL for your asset. This is where you could push that URL to an array, write it to a database, package it up in an email- the sky's the limit.
 
 ![Add Simple File Upload widget to UI](/assets/uploads/react_three.png)
 
-<p align="justify">You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.</p>
+You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.
 
-<p align="justify">Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.</p>
+Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
 ![console the URL](/assets/uploads/react_four.png)
 
