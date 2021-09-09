@@ -10,11 +10,11 @@ excerpt: In Rails versions prior to 6.1, Active Storage only served files from
   files from Active Storage in Rails 6.1
 permalink: active-storage-cdn
 ---
-<p align=“justify”>{{page.excerpt}}</p>
+<div align=“justify”>{{page.excerpt}}</div>
 
 ## What does the proxy feature do?
 
-<p align=“justify”> The proxy feature provides a permanent URL to an asset through your Rails application instead of an expiring URL. This enables you to put a CDN between your application and the browser. When a user requests an asset from your site the architecture looks like this: </p>
+<div align=“justify”> The proxy feature provides a permanent URL to an asset through your Rails application instead of an expiring URL. This enables you to put a CDN between your application and the browser. When a user requests an asset from your site the architecture looks like this: </div>
 
 ![Basic CDN Architecture](/assets/uploads/basic_cdn_architecture_screenshot.png)
 
