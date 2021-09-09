@@ -14,7 +14,7 @@ permalink: active-storage-cdn
 
 ## What does the proxy feature do?
 
-<p align=“justify”>The proxy feature provides a permanent URL to an asset through your Rails application instead of an expiring URL. This enables you to put a CDN between your application and the browser. When a user requests an asset from your site the architecture looks like this:</p>
+<p align=“justify”> The proxy feature provides a permanent URL to an asset through your Rails application instead of an expiring URL. This enables you to put a CDN between your application and the browser. When a user requests an asset from your site the architecture looks like this: </p>
 
 ![Basic CDN Architecture](/assets/uploads/basic_cdn_architecture_screenshot.png)
 
