@@ -13,7 +13,7 @@ permalink: easy-react-file-upload
 
 <p align="justify">Most devs know that nothing about S3 is easy. The pricing model is ambiguous at best and the integration can be an entire nightmare in and of itself. That's still only half of the problem. What about the file upload? The input? Everyone expects drag-and-drop these days but that's not really an easy thing to build, and again, only half of the problem.</p> 
 
-<p align="justify">That's where Simple File Upload comes in. Simple File Upload abstracts out the tough stuff so you can get to building the parts you love!</p>
+<p align="justify">That's where Simple File Upload comes in. Simple File Upload makes react file uploads easy so that you can get to building the parts you love!</p>
 
 <p align="justify">Today we're going to build a quick file uploader with built-in S3 uploads using the React framework.</p>
 
@@ -36,7 +36,7 @@ permalink: easy-react-file-upload
 3. Create an account at simplefileupload.com and grab your API key
 4. CD into your project folder and run <i><mark style="background-color: lightgrey">npm run start</mark></i>
 
-## Getting into the Code
+## Getting into the Code: Easy React File Uploads
 
 <p align="justify">First things first. Let's jump over to our App.js file and get rid of the react boilerplate. Strip it all of the way down until it looks like this.</p>
 
@@ -116,4 +116,4 @@ Let's check our Definition of Done and see where we stand:
 
 <p align="justify">You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time)!</p>
 
-<p align="justify">So now the tough stuff is out of the way and you can go build the fun parts of your app!</p>
+<p align="justify">React file uploads are easy with Simple File Upload, so you can focus on building the fun parts of your app!</p>
