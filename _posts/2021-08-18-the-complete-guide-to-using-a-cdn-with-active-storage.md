@@ -32,7 +32,9 @@ First of all, if you were serving public files from S3, the storage providers us
 
 Also it made it tricker to switch storage providers. It was possible, but there were necessary DNS changes and the buckets still had to conform to the specified naming conventions. 
 
-With the new proxy feature switching storage providers is as easy as updating `storage.yml` in your rails application. You can also now easily use wildcard subdomains and have more freedom in naming your buckets.
+<i><mark style=”background-color: lightgrey”>
+
+With the new proxy feature switching storage providers is as easy as updating <i><mark style="background-color: lightgrey">storage.yml</mark style></i> in your rails application. You can also now easily use wildcard subdomains and have more freedom in naming your buckets.
 
 ## How do you implement this change?
 
