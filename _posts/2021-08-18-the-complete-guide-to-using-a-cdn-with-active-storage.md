@@ -104,3 +104,7 @@ The architecture for the complete DNS and CDN setup for the application will loo
 That's it! Once all the DNS changes have propagated, the setup is complete. The very first time a file is requested, the request will go through your Rails application, and subsequent requests will be served via the CDN.
 
 Here at Simple File Upload, we've taken all of the pain out of using a CDN with Rails Active Storage. We provide a drop-in javascript widget to upload and serve files from a CDN *for you*. Try it free for 7 days!
+
+```
+I am some code 
+```
