@@ -1,10 +1,10 @@
 ---
 layout: blog
-title: The Complete Guide to using a CDN with Active Storage
+title: The Complete Guide to using a CDN with Rails Active Storage
 date: 2021-08-18T16:12:26.008Z
 thumbnail: /assets/uploads/undraw_folder_files_nweq.svg
-excerpt: In Rails versions prior to 6.1, Active Storage only served files from
-  an expiring URL that redirected to the selected service. This made it
+excerpt: In Rails versions prior to 6.1, Rails Active Storage only served files
+  from an expiring URL that redirected to the selected service. This made it
   impossible to serve the files via a CDN. There were many workarounds to this
   problem, and fortunately Rails introduced the new proxy features for serving
   files from Active Storage in Rails 6.1.
@@ -32,9 +32,9 @@ First of all, if you were serving public files from S3, the storage providers us
 
 Also, it made it tricker to switch storage providers. It was possible, but there were necessary DNS changes and the buckets still had to conform to the specified naming conventions. 
 
-With the new proxy feature switching storage providers is as easy as updating `storage.yml` in your rails application. You can also now easily use wildcard subdomains and have more freedom in naming your buckets.
+With the new proxy feature switching storage providers is as easy as updating `storage.yml` in your Rails application. You can also now easily use wildcard subdomains and have more freedom in naming your buckets.
 
-## How do you implement this change?
+## How do you add a CDN to Rails Active Storage?
 
 Assuming you have Active Storage set up and you’re trying to add a CDN, all you need to do is update your routing and serving of files.
 
@@ -45,6 +45,7 @@ In your `storage.yml`, add the `public:true` setting to your configuration if yo
 In a standard Active Storage configuration, you serve the file using <br>`<%= image_tag(@user.avatar) %>` (for example). This provides you an *expiring* URL that redirects to your storage service. You’ll notice the URL typically has the word “redirect” in the path. <br>
 
 Using the default Active Storage serving service, the URL will look like the one below: <br>
+
 > http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5090cc1490554569fbdd6a90ad0f99ae1f416e8/matthijs-van-schuppen-8jGB-ud8MtI-unsplash.jpg
 
 Notice the *blobs/redirect* string in the URL. If you click an expiring URL it will redirect to your bucket and eventually expire. Which means it can’t be cached by a CDN.
@@ -54,6 +55,7 @@ To use a CDN, you need to change the URL to be permanent. One way to do this is 
 ![cdn proxy routes](/assets/uploads/cdn_routes_screenshot.png)
 
 In your view you can now use `<%= image_tag cdn_image_url(@user.avatar) %>`. If you look at the generated URL, you will see it now contains the string `blob/proxy` and when you click it you are not redirected to the bucket/key endpoint:<br>
+
 > “http://localhost:3000/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5090cc1490554569fbdd6a90ad0f99ae1f416e8/matthijs-van-schuppen-8jGB-ud8MtI-unsplash.jpg"
 
 If you don’t have your CDN set up at this point, you can use your app host in the `CDN_HOST` variable, and the assets will still resolve correctly. 
@@ -61,7 +63,6 @@ If you don’t have your CDN set up at this point, you can use your app host in 
 With the setup just described, you can still use the redirect URL alongside the `cdn_url` as needed. The following routes both work. The first produces the redirect URL, and the second produces the proxy URL.
 
 * `<%= image_tag (@user.avatar)%>` creates a redirect URL
-
 * `<%= image_tag cdn_image_url(@user.avatar) %>` creates a proxy URL
 
 ## What if I want to proxy all my files?
@@ -78,13 +79,13 @@ Another option is to use route helpers directly. With no `active_storage.rb` con
 
 This helper accepts parameters, so you can specify your CDN host if desired: `rails_storage_proxy_url(@user.avatar, host: Rails.application.credentials.dig(:CDN_HOST), protocol: “https")`
 
-## How do I connect my CDN to my application? 
+## How do I connect my CDN to my application?
 
 The architecture for the complete DNS and CDN setup for the application will look something like this:
 
 ![Configuring a CDN ](/assets/uploads/cdn_architecture_screenshot.png)
 
-## How do I configure a CDN? 
+## How do I configure a CDN?
 
 * **Select a CDN.** For this article, we’ll use the [Expedited CDN](https://devcenter.heroku.com/articles/expeditedcdn) provided in the Heroku application store. We’ll also deploy the application with Heroku. If using Heroku, add your custom domain to your Heroku application. This is available on the Settings tab of your Heroku application.
 
@@ -102,4 +103,4 @@ The architecture for the complete DNS and CDN setup for the application will loo
 
 That's it! Once all the DNS changes have propagated, the setup is complete. The very first time a file is requested, the request will go through your Rails application, and subsequent requests will be served via the CDN.
 
-Here at Simple File Upload, we've taken all of the pain out of this process and provide a drop-in javascript widget to upload and serve files from a CDN *for you*. Try it free for 7 days!
+Here at Simple File Upload, we've taken all of the pain out of using a CDN with Rails Active Storage. We provide a drop-in javascript widget to upload and serve files from a CDN *for you*. Try it free for 7 days!
