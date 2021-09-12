@@ -21,7 +21,7 @@ Today we're going to build a quick file uploader with built-in S3 uploads using 
 
 We're going to keep this pretty barebones. We'll write some CSS, but the main feature we'll be focusing on is how simple it is to get the Simple File Uploader into your project and working!
 
-I have a folder on my desktop where I keep all of my projects, so we'll start by cd-ing into that directory and running <i><mark style="background-color: lightgrey">npx create-react-app simple-file-uploader</mark></i> in the terminal.
+I have a folder on my desktop where I keep all of my projects, so we'll start by cd-ing into that directory and running `npx create-react-app simple-file-uploader` in the terminal.
 
 From there we're going to install Simple File Upload. They have a React package for it, so we'll just <i><mark style="background-color: lightgrey">npm install react-simple-file-upload</mark></i>, and voila- we have it ready to use.
 
