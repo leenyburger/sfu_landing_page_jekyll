@@ -18,7 +18,7 @@ The proxy feature provides a permanent URL to an asset through your Rails applic
 
 ![Basic CDN Architecture](/assets/uploads/basic_cdn_architecture_screenshot.png)
 
-The first time an asset is requested, it will be served by your application. On all subsequent requests, it will be served from the CDN. To test this, access a file served by active storage. Here is one as an example: [View this link to see a proxied URL](https://test.files-simplefileupload.com/static/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGt2IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--724f7dbc977e981a72a0dda21206a083d92b24ef/bruno-cervera-eOf0PO0FX6o-unsplash.jpg).
+The first time an asset is requested, it will be served by your application. On all subsequent requests, it will be served from the CDN. To test this, access a file served by Active Storage. Here is one as an example: [View this link to see a proxied URL](https://test.files-simplefileupload.com/static/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGt2IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--724f7dbc977e981a72a0dda21206a083d92b24ef/bruno-cervera-eOf0PO0FX6o-unsplash.jpg).
 
 Open the “Network” tab in developer tools and request the resource again (i.e. refresh the page). You can see HIT in the cache headers, showing the file was served from a CDN, not from your application.
 
@@ -30,7 +30,7 @@ A lot of the workarounds the community was doing before Rails 6.1 involved creat
 
 First of all, if you were serving public files from S3, the storage providers usually required the domain name and the bucket name to be identical. This really became a problem if you were using wildcard subdomains. 
 
-Also it made it tricker to switch storage providers. It was possible, but there were necessary DNS changes and the buckets still had to conform to the specified naming conventions. 
+Also, it made it tricker to switch storage providers. It was possible, but there were necessary DNS changes and the buckets still had to conform to the specified naming conventions. 
 
 With the new proxy feature switching storage providers is as easy as updating `storage.yml` in your rails application. You can also now easily use wildcard subdomains and have more freedom in naming your buckets.
 
@@ -86,19 +86,19 @@ The architecture for the complete DNS and CDN setup for the application will loo
 
 ## How do I configure a CDN? 
 
-* **Select a CDN.** For this article, we’ll use the [Expedited CDN](https://devcenter.heroku.com/articles/expeditedcdn) provided in the Heroku application store. We’ll also deploy the application with Heroku. If using Heroku, add your custom domain to your Heroku application. This is available on the Settings tab of your Heroku application.
+1. **Select a CDN.** For this article, we’ll use the [Expedited CDN](https://devcenter.heroku.com/articles/expeditedcdn) provided in the Heroku application store. We’ll also deploy the application with Heroku. If using Heroku, add your custom domain to your Heroku application. This is available on the Settings tab of your Heroku application.
 
 ![Custom Domain Heroku ](/assets/uploads/custom_domains_heroku_screenshot.png)
 
-* **Add the target to your DNS provider.** After you add a custom domain with Heroku, Heroku will provide you a DNS record. Add this record to your domain's DNS configuration. Here’s an example of what that might look like with NameCheap as a DNS provider:
+2. **Add the target to your DNS provider.** After you add a custom domain with Heroku, Heroku will provide you a DNS record. Add this record to your domain's DNS configuration. Here’s an example of what that might look like with NameCheap as a DNS provider:
 
 ![DNS target](/assets/uploads/cname_screenshot.png)
 
-* **Complete the Setup of Expedited CDN or the CDN of your choice.** Typically at this point, you will be prompted by your CDN provider to add additional DNS records to start using the CDN. Expedited CDN with Heroku will provide a set of prompts to configure the service. The first step is to select the Heroku domain you would like to use with the CDN. Follow the prompts to add additional DNS records.
+3. **Complete the Setup of Expedited CDN or the CDN of your choice.** Typically at this point, you will be prompted by your CDN provider to add additional DNS records to start using the CDN. Expedited CDN with Heroku will provide a set of prompts to configure the service. The first step is to select the Heroku domain you would like to use with the CDN. Follow the prompts to add additional DNS records.
 
 ![Select Domain](/assets/uploads/select_domain_screenshot.png)
 
-* **Wait for the DNS to resolve.** After the DNS has resolved, complete the CDN setup. Add the `CDN_HOST` as an environment variable on your production environment.
+4. **Wait for the DNS to resolve.** After the DNS has resolved, complete the CDN setup. Add the `CDN_HOST` as an environment variable on your production environment.
 
 That's it! Once all the DNS changes have propagated, the setup is complete. The very first time a file is requested, the request will go through your Rails application, and subsequent requests will be served via the CDN.
 
