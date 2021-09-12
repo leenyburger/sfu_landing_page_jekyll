@@ -40,7 +40,6 @@ Now let's get our local server running. In your terminal you want to <i><mark st
 
 First things first. Let's jump over to our App.js file and get rid of the react boilerplate. Strip it all of the way down until it looks like this.
 
-
 {% highlight javascript %}
 // App.js
 import './App.css';
@@ -54,8 +53,6 @@ function App() {
 }
 export default App;
 {% endhighlight %}
-
-![remove react boilerplate](/assets/uploads/react_one.png)
 
 This gives us a clean base to work from and now we can get started building.
 
