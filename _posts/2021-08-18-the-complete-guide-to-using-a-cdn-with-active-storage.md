@@ -8,7 +8,7 @@ excerpt: In Rails versions prior to 6.1, Rails Active Storage only served files
   impossible to serve the files via a CDN. There were many workarounds to this
   problem, and fortunately Rails introduced the new proxy features for serving
   files from Active Storage in Rails 6.1.
-permalink: rails-active-storage-cdn
+permalink: active-storage-cdn
 ---
 {{page.excerpt}}
 
