@@ -45,8 +45,8 @@ production:
   service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: us-east-1
-  bucket: test-bucket-expires
+  region: "us-east-1"
+  bucket: "test-bucket-expires"
   public: true
 {% endhighlight %}
 
