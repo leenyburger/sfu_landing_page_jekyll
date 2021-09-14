@@ -34,7 +34,7 @@ Now let's get our local server running. In your terminal you want to `cd YOUR_PR
 1. npx create-react-app simple-file-uploader
 2. npm install react-simple-file-upload
 3. Create an account at simplefileupload.com and grab your API key
-4. CD into your project folder and run <i><mark style="background-color: lightgrey">npm run start</mark></i>
+4. CD into your project folder and run `npm run start`
 
 ## Getting into the Code: Easy React File Uploads
 
@@ -81,9 +81,9 @@ We'll refer back to this as we build. Let's start by giving it a quick "website"
 </header>
 {% endhighlight %}
 
-From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.
+From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add `import SimpleFileUpload from 'react-simple-file-upload'` back in our App.js file.
 
-And we'll go ahead and place the widget in the markup as well. Let's put in a <i><mark style="background-color: lightgrey">main</mark></i> tag to use as a wrapper for the uploader and our grid.
+And we'll go ahead and place the widget in the markup as well. Let's put in a `main` tag to use as a wrapper for the uploader and our grid.
 
 One very important thing to note about the upload widget is the onSuccess attribute available. This is where you'll call the function you want to happen when a file is successfully uploaded.
 
@@ -121,7 +121,7 @@ function App() {
 export default App;
 {% endhighlight %}
 
-You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.
+You're probably seeing an error right now. Your project is probably yelling at you because `handleUpload` doesn't exist. Let's fix that.
 
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
@@ -183,9 +183,9 @@ Looks like we're almost done! All that's left is to get our uploaded images into
 
 Since we're not using a database in this project, the easiest way to accomplish this will be to store the image URLs in hook and have our UI display them all.
 
-Our next step is to add <i><mark style="background-color: lightgrey">import { useState } from 'react'</mark></i> at the top of our file. After that, we'll create the hook just below the line <i><mark style="background-color: lightgrey">function App() {</mark></i>.
+Our next step is to add `import { useState } from 'react'` at the top of our file. After that, we'll create the hook just below the line `function App() {`.
 
-We'll just call this uploadedImages. <i><mark style="background-color: lightgrey">const \[uploadedImages, setUploadedImages] = useState(\[])</mark></i>.
+We'll just call this uploadedImages.`const \[uploadedImages, setUploadedImages] = useState(\[])`.
 
 Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
@@ -197,7 +197,7 @@ function handleUpload(url) {
 
 From there, we just need our front-end to map through the images and display them!
 
-Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div.
+Add this code just below your `.upload-wrapper` div.
 
 {% highlight javascript %}
 
