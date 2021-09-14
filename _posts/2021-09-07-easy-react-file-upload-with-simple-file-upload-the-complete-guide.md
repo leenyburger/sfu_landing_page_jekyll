@@ -66,7 +66,15 @@ Our Definition of Done could look something like this:
 
 We'll refer back to this as we build. Let's start by giving it a quick "website" feel with some content in the header.
 
-![content in header](/assets/uploads/react_two.png)
+{% highlight javascript %}
+// App.js
+<header className="App-header">
+  <h1>Simple File Upload Demo</h1>
+  <a className="btn" href="https://simplefileupload.com">
+    Try it now!
+  </a>
+</header>
+{% endhighlight %}
 
 From here, let's get our Simple File Upload widget into the UI. We'll import the SimpleFileUpload package into the project. To do that, we'll add <i><mark style="background-color: lightgrey">import SimpleFileUpload from 'react-simple-file-upload'</mark></i> back in our App.js file.
 
