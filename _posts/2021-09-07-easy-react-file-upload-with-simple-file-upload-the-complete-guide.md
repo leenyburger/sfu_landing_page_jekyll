@@ -126,7 +126,6 @@ You're probably seeing an error right now. Your project is probably yelling at y
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
 {% highlight javascript %}
-javascript
 function handleUpload(url) {
    console.log(url)
   }
@@ -192,7 +191,7 @@ Now that we have that in place, we can change our handleUpload() to set the imag
 
 {% highlight javascript %}
 function handleUpload(url) {
-    setUploadedImages(\[...uploadedImages, url])
+    setUploadedImages([...uploadedImages, url])
 }
 {% endhighlight %}
 
