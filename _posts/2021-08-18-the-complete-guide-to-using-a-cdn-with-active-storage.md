@@ -40,6 +40,16 @@ Assuming you have Active Storage set up and you’re trying to add a CDN, all yo
 
 In your `storage.yml`, add the `public:true` setting to your configuration if you haven’t already done so:
 
+{% highlight ruby %}
+production:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  region: us-east-1
+  bucket: test-bucket-expires
+  public: true
+{% endhighlight %}
+
 ![storage.yml](/assets/uploads/storageyml_screenshot.png)
 
 In a standard Active Storage configuration, you serve the file using <br>`<%= image_tag(@user.avatar) %>` (for example). This provides you an *expiring* URL that redirects to your storage service. You’ll notice the URL typically has the word “redirect” in the path. <br>
