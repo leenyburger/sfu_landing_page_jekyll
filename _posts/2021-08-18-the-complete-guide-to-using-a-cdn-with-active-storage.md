@@ -38,7 +38,7 @@ With the new proxy feature switching storage providers is as easy as updating `s
 
 Assuming you have Active Storage set up and you’re trying to add a CDN, all you need to do is update your routing and serving of files.
 
-In your `storage.yml`, add the `public:true` setting to your configuration if you haven’t already done so:
+In your <i><mark style=”background-color: lightgrey”>storage.yml</mark style></i>, add the `public:true` setting to your configuration if you haven’t already done so:
 
 {% highlight ruby %}
 production:
@@ -49,8 +49,6 @@ production:
   bucket: test-bucket-expires
   public: true
 {% endhighlight %}
-
-![storage.yml](/assets/uploads/storageyml_screenshot.png)
 
 In a standard Active Storage configuration, you serve the file using <br>`<%= image_tag(@user.avatar) %>` (for example). This provides you an *expiring* URL that redirects to your storage service. You’ll notice the URL typically has the word “redirect” in the path. <br>
 
@@ -84,8 +82,6 @@ direct :cdn_image do |_model_, _options_|
       options.merge(host: _Rails_.application.credentials.dig(:CDN_HOST) )
   end
 {% endhighlight %}
-
-![cdn proxy routes](/assets/uploads/cdn_routes_screenshot.png)
 
 In your view you can now use `<%= image_tag cdn_image_url(@user.avatar) %>`. If you look at the generated URL, you will see it now contains the string `blob/proxy` and when you click it you are not redirected to the bucket/key endpoint:<br>
 
