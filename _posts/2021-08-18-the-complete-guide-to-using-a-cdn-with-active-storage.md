@@ -62,6 +62,29 @@ Notice the *blobs/redirect* string in the URL. If you click an expiring URL it w
 
 To use a CDN, you need to change the URL to be permanent. One way to do this is to modify the `routes.rb` file and use the route directly.
 
+{% highlight ruby %}
+direct :cdn_image do |model, options|
+  if model.respond_to?(signed_id)
+    route_for(
+      :rails_service_blob_proxy,
+      model.signed_id,
+      model.filename,
+      options.merge(host: Rails.application.credentials.dig(:CDN_HOST) )
+    )
+  else
+    signed_blob_id = model.blob.signed_id
+    variation_key  = model.variation.key
+    filename.      = model.blob.filename
+
+    route_for(
+      :rails_blob_representation_proxy,
+      signed_blob_id,
+      variation_key,
+      filename,
+      options.merge(host: Rails.application.credentials.dig(:CDN_HOST) )
+  end
+{% endhighlight %}
+
 ![cdn proxy routes](/assets/uploads/cdn_routes_screenshot.png)
 
 In your view you can now use `<%= image_tag cdn_image_url(@user.avatar) %>`. If you look at the generated URL, you will see it now contains the string `blob/proxy` and when you click it you are not redirected to the bucket/key endpoint:<br>
