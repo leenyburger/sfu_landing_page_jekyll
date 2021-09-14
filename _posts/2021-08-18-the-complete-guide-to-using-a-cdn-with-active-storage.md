@@ -38,7 +38,7 @@ With the new proxy feature switching storage providers is as easy as updating `s
 
 Assuming you have Active Storage set up and you’re trying to add a CDN, all you need to do is update your routing and serving of files.
 
-In your <i><mark style=”background-color: lightgrey”>storage.yml</mark style></i>, add the `public:true` setting to your configuration if you haven’t already done so:
+In your `storage.yml`, add the `public:true` setting to your configuration if you haven’t already done so:
 
 {% highlight ruby %}
 production:
