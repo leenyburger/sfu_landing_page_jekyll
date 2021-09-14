@@ -8,7 +8,7 @@ excerpt: "We use the cloud every day to save cute photos of our pets and access
   stored? Is it magic? What are the benefits of cloud storage? "
 permalink: benefits-of-cloud-storage
 ---
-{Excerpt}
+{{page.excerpt}}
 
 ## What is Cloud Storage?
 
