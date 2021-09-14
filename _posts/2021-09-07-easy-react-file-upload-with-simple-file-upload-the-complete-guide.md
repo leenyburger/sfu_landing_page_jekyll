@@ -42,8 +42,11 @@ First things first. Let's jump over to our App.js file and get rid of the react 
 
 {% highlight javascript %}
 // App.js
+
 import './App.css';
+
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -51,6 +54,7 @@ function App() {
     </div>
   );
 }
+
 export default App;
 {% endhighlight %}
 
@@ -68,6 +72,7 @@ We'll refer back to this as we build. Let's start by giving it a quick "website"
 
 {% highlight javascript %}
 // App.js
+
 <header className="App-header">
   <h1>Simple File Upload Demo</h1>
   <a className="btn" href="https://simplefileupload.com">
@@ -86,9 +91,12 @@ This is also where you'll receive access to the S3 generated URL for your asset.
 
 {% highlight javascript %}
 // App.js
+
 import './App.css';
 import SimpleFileUpload from 'react-simple-file-upload';
+
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -109,6 +117,7 @@ function App() {
     </div>
   );
 }
+
 export default App;
 {% endhighlight %}
 
@@ -131,12 +140,16 @@ So now your file should be looking something like this.
 
 {% highlight javascript %}
 // App.js
+
 import './App.css';
 import SimpleFileUpload from 'react-simple-file-upload';
+
 function App() {
+
 function handleUpload(url) {
    console.log(url)
   }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -157,6 +170,7 @@ function handleUpload(url) {
     </div>
   );
 }
+
 export default App;
 {% endhighlight %}
 
@@ -178,7 +192,7 @@ Now that we have that in place, we can change our handleUpload() to set the imag
 
 {% highlight javascript %}
 function handleUpload(url) {
-    setUploadedImages([...uploadedImages, url])
+    setUploadedImages(\[...uploadedImages, url])
 }
 {% endhighlight %}
 
@@ -187,6 +201,7 @@ From there, we just need our front-end to map through the images and display the
 Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div.
 
 {% highlight javascript %}
+
 <ul className="image-grid">
   {uploadedImages.length ? (
     uploadedImages.map((image) => (
@@ -211,9 +226,11 @@ The last step is to dress this up just a little bit. Move over to your App.css f
   justify-content: space-between;
   align-items: center;
 }
+
 .App header h1 {
   font-size: 1.25rem;
 }
+
 .btn {
   background: linear-gradient(90deg, #b731dd 0, #4161eb 100%);
   padding: 0.5rem 1.25rem;
@@ -223,22 +240,27 @@ The last step is to dress this up just a little bit. Move over to your App.css f
   transition: 150ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
   box-shadow: 5px 5px 10px rgba(17, 17, 17, 0.25);
 }
+
 .btn:hover {
   transform: scale(1.05);
 }
+
 .App header a {
   color: white;
   text-decoration: none;
 }
+
 .App main {
   max-width: 1024px;
   margin: 0 auto;
   overflow: hidden;
 }
+
 .App .upload-wrapper {
   display: flex;
   justify-content: center;
 }
+
 .App main .image-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -249,14 +271,17 @@ The last step is to dress this up just a little bit. Move over to your App.css f
   text-align: center;
   padding-left: 0;
 }
+
 .image-grid p {
   grid-column-start: 2;
   opacity: 50%;
 }
+
 .image-grid li {
   overflow: hidden;
   height: 200px;
 }
+
 .image-grid img {
   width: 100%;
   height: 100%;
