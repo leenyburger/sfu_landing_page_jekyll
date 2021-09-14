@@ -61,13 +61,13 @@ Notice the *blobs/redirect* string in the URL. If you click an expiring URL it w
 To use a CDN, you need to change the URL to be permanent. One way to do this is to modify the `routes.rb` file and use the route directly.
 
 {% highlight ruby %}
-direct :cdn_image do |_model_, _options_|
+direct :cdn_image do |model, options|
   if model.respond_to?(signed_id)
     route_for(
       :rails_service_blob_proxy,
       model.signed_id,
       model.filename,
-      options.merge(host: _Rails_.application.credentials.dig(:CDN_HOST) )
+      options.merge(host: Rails.application.credentials.dig(:CDN_HOST) )
     )
   else
     signed_blob_id = model.blob.signed_id
@@ -79,7 +79,7 @@ direct :cdn_image do |_model_, _options_|
       signed_blob_id,
       variation_key,
       filename,
-      options.merge(host: _Rails_.application.credentials.dig(:CDN_HOST) )
+      options.merge(host: Rails.application.credentials.dig(:CDN_HOST) )
   end
 {% endhighlight %}
 
