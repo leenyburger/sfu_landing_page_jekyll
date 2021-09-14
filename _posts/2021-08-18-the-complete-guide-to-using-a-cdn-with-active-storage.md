@@ -81,6 +81,7 @@ direct :cdn_image do |model, options|
       filename,
       options.merge(host: Rails.application.credentials.dig(:CDN_HOST) )
   end
+end
 {% endhighlight %}
 
 In your view you can now use `<%= image_tag cdn_image_url(@user.avatar) %>`. If you look at the generated URL, you will see it now contains the string `blob/proxy` and when you click it you are not redirected to the bucket/key endpoint:<br>
