@@ -84,13 +84,44 @@ One very important thing to note about the upload widget is the onSuccess attrib
 
 This is also where you'll receive access to the S3 generated URL for your asset. This is where you could push that URL to an array, write it to a database, package it up in an email- the sky's the limit.
 
-![Add Simple File Upload widget to UI](/assets/uploads/react_three.png)
+{% highlight javascript %}
+// App.js
+import './App.css';
+import SimpleFileUpload from 'react-simple-file-upload';
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Simple File Upload Demo</h1>
+        <a className="btn" href="https://simplefileupload.com">
+          Try it now!
+        </a>
+      </header>
+      <main>
+        <div className="upload-wrapper">
+          <SimpleFileUpload
+            apiKey="YOUR_API_KEY_GOES_HERE"
+            onSuccess={handleUpload}
+            preview="false"
+          />
+        </div>
+      </main>
+    </div>
+  );
+}
+export default App;
+{% endhighlight %}
 
 You're probably seeing an error right now. Your project is probably yelling at you because <i><mark style="background-color: lightgrey">handleUpload</mark></i> doesn't exist. Let's fix that.
 
 Let's create that function just before your return statement. To quickly check that our uploader is working, we can just quickly console the URL.
 
-![console the URL](/assets/uploads/react_four.png)
+{% highlight javascript %}
+javascript
+function handleUpload(url) {
+   console.log(url)
+  }
+{% endhighlight %}
 
 Now… upload a file! Did it work?! Sweet! So at this point, our upload widget is functioning and we just need to build out our UI a little more.
 
@@ -98,7 +129,36 @@ So in very little code, we've got a working drag-and-drop widget connected strai
 
 So now your file should be looking something like this.
 
-![drag-and-drop widget](/assets/uploads/react_five.png)
+{% highlight javascript %}
+// App.js
+import './App.css';
+import SimpleFileUpload from 'react-simple-file-upload';
+function App() {
+function handleUpload(url) {
+   console.log(url)
+  }
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Simple File Upload Demo</h1>
+        <a className="btn" href="https://simplefileupload.com">
+          Try it now!
+        </a>
+      </header>
+      <main>
+        <div className='upload-wrapper'>
+          <SimpleFileUpload
+            apiKey='YOUR_API_KEY_GOES_HERE'
+            onSuccess={handleUpload}
+            preview="false"
+          />
+        </div>
+      </main
+    </div>
+  );
+}
+export default App;
+{% endhighlight %}
 
 Let's check our Definition of Done and see where we stand:
 
@@ -116,19 +176,94 @@ We'll just call this uploadedImages. <i><mark style="background-color: lightgrey
 
 Now that we have that in place, we can change our handleUpload() to set the images in our hook rather than just logging them out.
 
-![store image URLs in hook](/assets/uploads/react_six.png)
+{% highlight javascript %}
+function handleUpload(url) {
+    setUploadedImages([...uploadedImages, url])
+}
+{% endhighlight %}
 
 From there, we just need our front-end to map through the images and display them!
 
 Add this code just below your <i><mark style="background-color: lightgrey">.upload-wrapper</mark></i> div.
 
-![map front-end through images](/assets/uploads/react_seven.png)
+{% highlight javascript %}
+<ul className="image-grid">
+  {uploadedImages.length ? (
+    uploadedImages.map((image) => (
+      <li>
+        <img src={image} alt="Fun images" />
+      </li>
+    ))
+   ) : (
+   <p>Your uploaded images will appear here!</p>
+ )}
+</ul>
+{% endhighlight %}
 
 There you go! We're now using Simple File Upload to send images straight to S3 and displaying them in a grid!
 
 The last step is to dress this up just a little bit. Move over to your App.css file and add the code below.
 
-![App.css file code](/assets/uploads/react_eight.png)
+{% highlight javascript %}
+.App header {
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.App header h1 {
+  font-size: 1.25rem;
+}
+.btn {
+  background: linear-gradient(90deg, #b731dd 0, #4161eb 100%);
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 150ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  box-shadow: 5px 5px 10px rgba(17, 17, 17, 0.25);
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.App header a {
+  color: white;
+  text-decoration: none;
+}
+.App main {
+  max-width: 1024px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.App .upload-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.App main .image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  row-gap: 6rem;
+  list-style: none;
+  margin-top: 6rem;
+  text-align: center;
+  padding-left: 0;
+}
+.image-grid p {
+  grid-column-start: 2;
+  opacity: 50%;
+}
+.image-grid li {
+  overflow: hidden;
+  height: 200px;
+}
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+{% endhighlight %}
 
 ## What just happened?
 
