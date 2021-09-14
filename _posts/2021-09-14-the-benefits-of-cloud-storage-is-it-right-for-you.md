@@ -18,7 +18,7 @@ Cloud storage may consist of one or many data servers. A cloud service provider 
 
 When you save a file to the cloud, it is stored on these remote data servers instead of your computer's hard drive. It is then accessible to you on any of your devices at any time.
 
-## Five Benefits of Cloud Storage
+## Four Benefits of Cloud Storage
 
 ### Cost:
 
