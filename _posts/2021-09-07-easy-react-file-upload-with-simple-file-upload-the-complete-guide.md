@@ -294,4 +294,4 @@ The last step is to dress this up just a little bit. Move over to your App.css f
 You, my friend, just uploaded images to Amazon S3 in 6 minutes (according to this article's read time). React file uploads are easy with Simple File Upload, so you can focus on building the fun parts of your app!
 
 ### Check out the complete repo: 
-https://github.com/leenyburger/simple-file-upload-react-demo
+[Working Easy File Uploads With React On Github](https://github.com/leenyburger/simple-file-upload-react-demo)
