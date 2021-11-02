@@ -210,20 +210,20 @@ If this is successful, we'll now be on a screen that provides access keys. Downl
 
 Quick reminder - we do not *ever* want to put our secret access key in plaintext in our application and push to Github (for example). If our keys are exposed, we can deactivate them and create new ones from the Users page. 
 
-## RETURN TO RAILS APP
+## How do we add the AWS keys to our Rails credentials?
 
-The AWS keys need to be added to your Rails credentials. 
-
-Open the rails credentials file to edit using the following (replace “code” with your editor of choice)
+### Step 1:
+Open the Rails credentials file to edit using the following (replace “code” with your editor of choice):
 
 EDITOR='code --wait' bin/rails credentials:edit
 
 Example: If using sublime text 
 EDITOR='sublime --wait' bin/rails credentials:edit
 
-Your editor will automatically open `credentials.yml`. Add the AWS keys you downloaded earlier to this file, and close the editor. You can view the credentials at any time using 
+Your editor will automatically open `credentials.yml`. Add the AWS keys you downloaded earlier to this file, and close the editor. You can view the credentials at any time using: 
 `bin/rails credentials:show`
 
+### Step 2: 
 We’re going to add an Avatar to a User. Open `models/user.rb` and add `has_one_attached :avatar`. 
 
 {% highlight ruby %}
@@ -232,11 +232,11 @@ class User < ApplicationRecord
 end
 {% endhighlight %}
 
-Navigate to the user form page `app/views/users/_form.html.erb` and add a file field to accept the avatar file. 
+Navigate to the user form page: `app/views/users/_form.html.erb` and add a file field to accept the avatar file. 
 
 `<%= form.file_field :avatar %>`
 
-You have to whitelist the avatar parameter in the controller. Open `app/controllers/users_controller.rb` and add `avatar` to the whitelisted parameters. 
+We'll have to whitelist the avatar parameter in the controller. Open `app/controllers/users_controller.rb` and add `avatar` to the whitelisted parameters. 
 
 {% highlight ruby %}
     def user_params
@@ -247,9 +247,10 @@ You have to whitelist the avatar parameter in the controller. Open `app/controll
 We’ll also want to be able to see the file once it’s been uploaded, so let’s add an image tag to our users#show page. In `app/views/users/show` add 
 <%= image_tag @user.avatar %>
 
+### Step 3:
 Now start up your rails server `rails s`, add an image, and see it upload to S3! 
 
-## DIRECT UPLOADS
+## Add direct uploading to your application
 
 If you look at the network log, you’ll see two requests. One to your server and one to S3. 
 
@@ -257,6 +258,7 @@ GET NETWORK REQUEST SCREEN SHOT (network_request_normal_upload)
 
 Direct uploads remove this requirement and put the file directly onto S3. There are a few steps to add direct uploading to your application. 
 
+### Step 1:
 Add `activestorage.js` to your application. Depending on when you created your Rails application, it may already be included. To use the npm package in `app/javascript/packs/application.js` add:
 
 {% highlight ruby %}
@@ -270,13 +272,14 @@ Add `direct_upload: true` to your file field.
  <%= form.file_field :avatar, direct_upload: true %>
 {% endhighlight %}
 
-To use direct uploads with S3, you’ll need to configure the bucket to allow cross-origin requests or CORS from your application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
+### Step 2:
+To use direct uploads with S3, we'll need to configure the bucket to allow cross-origin requests or CORS from our application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
 
 Click on the “Permissions” header:
 
 ![select-bucket-permissions](/assets/uploads/select_bucket_permissions.png)
 
-Scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowed origins must be an exact domain match - in this example, “http://localhost:3000/" would fail because of the additional backslash. 
+Scroll down to the “CORS policy” section (past the bucket policy section). Add the below policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowed origins must be an exact domain match. In this example, “http://localhost:3000/" would fail because of the additional backslash. 
 
 {% highlight ruby %}
 \[
@@ -301,5 +304,4 @@ Scroll down to the “CORS policy” section (past the bucket policy section). A
 ]
 {% endhighlight %}
 
-Save the policy and return it to your rails application. 
-Upload a file, and the file should directly upload to s3!
+Save the policy and return it to your rails application. Upload a file, and the file should directly upload to S3!
