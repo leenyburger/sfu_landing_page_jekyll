@@ -1,42 +1,51 @@
 ---
 layout: blog
-title: "Rails File Uploads to S3 on Heroku: The Complete How-To Guide"
+title: "Direct Uploading to S3 on Heroku with Rails and Active Storage: The
+  Complete How-To Guide"
 date: 2021-11-02T14:15:04.195Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
 excerpt: This article describes how to use Ruby on Rails to upload files and
-  images to Amazon S3 (S3) on Heroku. In any Rails application, the traditional
-  way to upload files is for the files to travel through the application and
-  then stream to S3. This is the default behavior of many popular Ruby gems,
-  such as Paperclip, CarrierWave, and Active Storage. However, is this the best
-  solution for Rails file uploads to S3 on Heroku?
+  images to Amazon S3 on Heroku. In any Rails application, the traditional way
+  to upload files is for the files to travel through the application and then
+  stream to S3. This is the default behavior of many popular Ruby gems, such as
+  Paperclip, CarrierWave, and Active Storage. However, is this the best solution
+  for Rails file uploads to S3 on Heroku?
 permalink: rails-file-upload
 ---
 {{page.excerpt}}
 
-While this solution works fine for smaller files, it can cause issues on Heroku when trying to upload larger files. This is because Heroku uses an ephemeral file system, so the larger files may be deleted from the dyno before the files can be uploaded to S3. 
+While this solution works fine for smaller files, it can cause issues on Heroku when trying to upload larger files. This is because Heroku uses an ephemeral file system, so the larger files may be deleted from the dyno before the files can be uploaded to S3. Proxying upload requests through your application can also increase network traffic and server CPU usage. 
 
 ## What is the solution to Rails file uploads on Heroku?
 
-One solution to this problem is “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploads mean it doesn’t matter what the Heroku dynos do because the file never touches Heroku.
+One solution to this problem is “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploads mean it doesn’t matter what the Heroku dynos do because the file never touches your application. 
 
 ## How can you do this in Rails 6 and beyond?
 
 Active Storage was introduced as part of the Rails core in 6.1, and it is a good tool to use for direct uploads on Heroku. Let’s get started. 
 
-If you have an existing Rails application that needs direct uploads, jump to Step 3 to get right to the Active Storage code. Otherwise, let's scaffold a basic application to get started. 
+If you have an existing Rails application that needs direct uploading, jump to Step 3 to get right to the Active Storage code. Otherwise, let's scaffold a basic application to get started. 
 
 ### Step 1:
 
 Set up a new Rails application in the folder of your choice: 
-`rails new direct_upload_example` `cd direct_upload_example` `bundle install` 
+
+{% highlight ruby %}
+rails new direct_upload_example
+cd direct_upload_example
+bundle install 
+{% endhighlight %}
 
 ### Step 2:
 
 At a minimum, you’ll need to add one model. You’ll create a user form with an avatar. Use the scaffold generator to create the necessary files: 
-`rails g scaffold user name:string email:string`
-`bin/rails db:migrate`
+{% highlight ruby %}
+rails g scaffold user name:string email:string
+bin/rails db:migrate
+{% endhighlight %}
 
-You’ll also need a root route so you don’t have to manually navigate to the Users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
+You’ll also need a root route so you don’t have to manually navigate to the Users page. In your editor of choice, open `routes.rb` and add 
+`root to: “users#index"`
 
 Open the application to make sure it’s up and running: 
 `rails s` and navigate to `http://localhost:3000/` - you should see the Users Index page. 
@@ -46,8 +55,10 @@ Open the application to make sure it’s up and running:
 Add Active Storage. Active Storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
 
 Add Active Storage and run the migrations:
-`bin/rails active_storage:install` 
-`bin/rails db:migrate` 
+{% highlight ruby %}
+bin/rails active_storage:install 
+bin/rails db:migrate 
+{% endhighlight %}
 
 ### Step 4:
 
@@ -69,7 +80,7 @@ amazon:
 
 ### Step 5:
 
-Tell Rails when to use each environment. It is highly recommended to use different environments for development and production. 
+Next you'll need to tell rails when to use each environment. It is highly recommended to use different environments for development and production. 
 
 For this example, you'll use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Since you want to use AWS for both development and production environments, you’ll need to update `config/storage.yml` to have two AWS environments:
 
@@ -91,10 +102,10 @@ amazon_production:
 
 Now, you can tell Rails when to use each environment.
 
-In config/environments/development, add the following line: 
+In `config/environments/development`, add the following line: 
 `config.active_storage_service = :amazon_development`
 
-In config/environments/production, add the following line:
+In `config/environments/production`, add the following line:
 `config.active_storage_service = :amazon_production`
 
 ## Set up your AWS credentials
