@@ -68,7 +68,7 @@ amazon:
 
 You then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use Amazon for both development and production environments we’ll need to update  config/storage.yml to have two AWS environments. 
 
-```
+{% highlight ruby %}
 amazon_development:
   service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
@@ -82,7 +82,7 @@ amazon_production:
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   region: us-east-1
   bucket: tutorial-production-bucket
-```
+{% endhighlight %}
 
 Now we’ll need to tell Rails when to use each environment.
 
@@ -92,7 +92,7 @@ In config/environments/development add the following line:
 In config/environments/production:
 `config.active_storage_service = :amazon_production`
 
-\##HOW TO GET YOUR AWS CREDENTIALS##
+## HOW TO GET YOUR AWS CREDENTIALS
 
 Now you’ll need to go to AWS services and create your cloud storage account and set up your S3 buckets. If you have an existing account, go ahead and sign in. If you don’t go aws.amazon.com and create a new account. 
 
@@ -142,7 +142,7 @@ To create the further secure policy, click “Create Policy”. This will only b
 
 The following custom policy will allow us to create keys that can only access specified buckets. 
 
-```
+{% highlight ruby %}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -170,7 +170,7 @@ The following custom policy will allow us to create keys that can only access sp
 }
   ]
 }
-```
+{% endhighlight %}
 
 This policy is separated into two parts because the List action is performed on the bucket itself and the put/get/delete actions are performed on objects *in* the bucket. 
 
@@ -196,7 +196,7 @@ If this is successful, you’ll now be on a screen that provides access keys. Do
 
 Quick reminder - do not *ever* put your secret access key in plaintext in your application and push to Github (for example). If your keys are exposed you can deactivate them and create new ones from the Users page. 
 
-\##RETURN TO RAILS APP##
+## RETURN TO RAILS APP
 
 The AWS keys need to be added to your Rails credentials. 
 
@@ -212,11 +212,11 @@ Your editor will automatically open `credentials.yml`. Add the AWS keys you down
 
 We’re going to add an Avatar to a User. Open `models/user.rb` and add `has_one_attached :avatar`. 
 
-```
+{% highlight ruby %}
 class User < ApplicationRecord
   has_one_attached :avatar
 end
-```
+{% endhighlight %}
 
 Navigate to the user form page `app/views/users/_form.html.erb` and add a file field to accept the avatar file. 
 
@@ -224,18 +224,18 @@ Navigate to the user form page `app/views/users/_form.html.erb` and add a file f
 
 You have to whitelist the avatar parameter in the controller. Open `app/controllers/users_controller.rb` and add `avatar` to the whitelisted parameters. 
 
-```
+{% highlight ruby %}
     def user_params
       params.require(:user).permit(:name, :email, :avatar)
     end
-```
+{% endhighlight %}
 
 We’ll also want to be able to see the file once it’s been uploaded, so let’s add an image tag to our users#show page. In `app/views/users/show` add 
 <%= image_tag @user.avatar %>
 
 Now start up your rails server `rails s`, add an image, and see it upload to S3! 
 
-\##DIRECT UPLOADS##
+## DIRECT UPLOADS
 
 If you look at the network log, you’ll see two requests. One to your server and one to S3. 
 
@@ -245,16 +245,16 @@ Direct uploads remove this requirement and put the file directly onto S3. There 
 
 Add `activestorage.js` to your application. Depending on when you created your Rails application, it may already be included. To use the npm package in `app/javascript/packs/application.js` add:
 
-```
+{% highlight ruby %}
 import * as ActiveStorage from "@rails/activestorage"
 ActiveStorage.start()
-```
+{% endhighlight %}
 
 Add `direct_upload: true` to your file field. 
 
-```
+{% highlight ruby %}
  <%= form.file_field :avatar, direct_upload: true %>
-```
+{% endhighlight %}
 
 To use direct uploads with S3, you’ll need to configure the bucket to allow cross-origin requests or CORS from your application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
 
@@ -264,7 +264,7 @@ Click on the “Permissions” header:
 
 Scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowed origins must be an exact domain match - in this example, “http://localhost:3000/" would fail because of the additional backslash. 
 
-```
+{% highlight ruby %}
 [
     {
         "AllowedHeaders": [
@@ -285,7 +285,7 @@ Scroll down to the “CORS policy” section (past the bucket policy section). A
         "MaxAgeSeconds": 3600
     }
 ]
-```
+{% endhighlight %}
 
 Save the policy and return it to your rails application. 
 Upload a file, and the file should directly upload to s3!
