@@ -2,7 +2,7 @@
 layout: blog
 title: "S3 Rails File Uploads: The Complete How-To Guide"
 date: 2021-11-02T14:15:04.195Z
-thumbnail: /assets/uploads/undraw_going_up_ttm5.png
+thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
 excerpt: "This article describes how to upload files to S3 using Ruby on Rails
   and AWS using direct uploading. In any Rails application the traditional way
   to upload files is for the files to travel through the application and then
