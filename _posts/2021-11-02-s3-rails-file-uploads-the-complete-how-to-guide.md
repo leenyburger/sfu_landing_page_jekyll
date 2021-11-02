@@ -280,7 +280,7 @@ Click on the “Permissions” header:
 Scroll down to the “CORS policy” section (past the bucket policy section). Add the below policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowed origins must be an exact domain match. In this example, “http://localhost:3000/" would fail because of the additional backslash: 
 
 {% highlight ruby %}
-\[
+[
     {
         "AllowedHeaders": [
             "*"
