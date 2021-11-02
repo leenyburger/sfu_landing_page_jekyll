@@ -203,7 +203,7 @@ Check the policy that you just created, and click “Next: Tags,” then “Next
 
 If this is successful, you'll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
 
-![access-keys](/assets/uploads/access-keys.png)
+![access-keys](/assets/uploads/compressed_success_message.png)
 
 Quick reminder - you do not *ever* want to put your secret access key in plaintext in your application and push to Github (for example). If your keys are exposed, you can deactivate them and create new ones from the Users page. 
 
