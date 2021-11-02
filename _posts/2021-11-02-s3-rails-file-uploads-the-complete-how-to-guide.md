@@ -106,31 +106,33 @@ From the AWS console (once you have logged in), click on “Services" in the upp
 
 ### Step 2:
 
-Then click on “Create Bucket.” 
+Click on “Create Bucket.” 
 
 ![aws-console-find-S3](/assets/uploads/aws_console_find_s3.png)
 
-CIRCLE S3
+### Step 3:
 
-From the next screen enter the bucket name. 
+From the next screen enter the bucket name: 
 
 ![aws-new-bucket](/assets/uploads/aws_new_bucket.png)
 
-CIRCLE/POINT TO create_bucket
+### Step 4:
 
-In this tutorial we’ll set up the development bucket, the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values.
+In this tutorial we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values.
 
 ![create-new-bucket-page](/assets/uploads/create-new-bucket-page.png)
 
-We’ll modify settings as necessary later. Click on “Create Bucket” 
+We’ll modify the settings later, as needed. 
 
-Next, you’ll need to set up IAM credentials. You never want to use your root access credentials to create your API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll)
+Click on “Create Bucket” 
+
+### Step 5: 
+
+Next, we'll need to set up IAM credentials. We never want to use our root access credentials to create our API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll).
 
 ![find_iam](/assets/uploads/find_iam.png)
 
-CIRCLE IAM
-
-From the IAM dashboard, click on Users in the left-hand side navigation bar
+From the IAM dashboard, click on "Users" in the left-hand side navigation bar.
 
 Click on “Add Users” to add a new IAM user. 
 
