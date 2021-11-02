@@ -19,11 +19,11 @@ While this solution works fine for smaller files, it can cause issues on Heroku 
 
 One solution to this problem is “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploading means it doesn’t matter what the Heroku dynos do because the file never touches Heroku.
 
-## How can we do this in Rails 6 and beyond?
+## How can you do this in Rails 6 and beyond?
 
 Active Storage was introduced as part of the Rails core in 6.1, and it is a good tool to use for direct uploading on Heroku. Let’s get started. 
 
-If you have an existing Rails application that needs direct uploading, jump to Step 3 to get right to the Active Storage code. Otherwise, we’ll scaffold a basic application to get started. 
+If you have an existing Rails application that needs direct uploading, jump to Step 3 to get right to the Active Storage code. Otherwise, let's scaffold a basic application to get started. 
 
 ### Step 1:
 
@@ -32,11 +32,11 @@ Set up a new Rails application in the folder of your choice:
 
 ### Step 2:
 
-At a minimum, we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files: 
+At a minimum, you’ll need to add one model. You’ll create a user form with an avatar. Use the scaffold generator to create the necessary files: 
 `rails g scaffold user name:string email:string`
 `bin/rails db:migrate`
 
-We’ll also need a root route so we don’t have to manually navigate to the Users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
+You’ll also need a root route so you don’t have to manually navigate to the Users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
 
 Open the application to make sure it’s up and running: 
 `rails s` and navigate to `http://localhost:3000/` - you should see the Users Index page. 
@@ -69,9 +69,9 @@ amazon:
 
 ### Step 5:
 
-We then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. 
+You then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. 
 
-For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Since we want to use AWS for both development and production environments, we’ll need to update `config/storage.yml` to have two AWS environments:
+For this example, you'll use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Since you want to use AWS for both development and production environments, you’ll need to update `config/storage.yml` to have two AWS environments:
 
 {% highlight ruby %}
 amazon_development:
@@ -89,7 +89,7 @@ amazon_production:
   bucket: tutorial-production-bucket
 {% endhighlight %}
 
-Next, we’ll need to tell Rails when to use each environment.
+Next, you’ll need to tell Rails when to use each environment.
 
 In config/environments/development, add the following line: 
 `config.active_storage_service = :amazon_development`
@@ -97,9 +97,9 @@ In config/environments/development, add the following line:
 In config/environments/production, add the following line:
 `config.active_storage_service = :amazon_production`
 
-## How can we get our AWS credentials?
+## How can you get your AWS credentials?
 
-Now, we'll need to go to AWS services, create our cloud storage account, and set up our S3 buckets. If you have an existing account, go ahead and sign in. If you don’t have an existing account, go to aws.amazon.com and create a new account. 
+Now, you'll need to go to AWS services, create your cloud storage account, and set up your S3 buckets. If you have an existing account, go ahead and sign in. If you don’t have an existing account, go to aws.amazon.com and create a new account. 
 
 ### Step 1:
 
@@ -119,11 +119,11 @@ From the next screen enter the bucket name:
 
 ![create-new-bucket-page](/assets/uploads/create-new-bucket-page.png)
 
-In this tutorial, we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. We’ll modify the settings later, as needed. 
+In this tutorial, you’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. You’ll modify the settings later, as needed. 
 
 ### Step 4:
 
-Next, we'll need to set up IAM credentials. We never want to use our root access credentials to create our API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll).
+Next, you'll need to set up IAM credentials. You never want to use your root access credentials to create your API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll).
 
 ![find-iam](/assets/uploads/find_iam.png)
 
@@ -135,7 +135,7 @@ From the IAM dashboard, click on "Users" in the left-hand side navigation bar. C
 
 Add a User name - this tutorial is using the name “tutorial-user.” 
 
-We then have the choice to set programmatic access and/or console access. These API keys will be used by Active Storage to upload files, so we only need programmatic access here. 
+You then have the choice to set programmatic access and/or console access. These API keys will be used by Active Storage to upload files, so you only need programmatic access here. 
 
 Then, click on "Next-Permissions."
 
@@ -143,9 +143,9 @@ Then, click on "Next-Permissions."
 
 ### Step 6:
 
-Here we have two choices - we can select “AmazonS3FullAccess” or we can create a custom policy. To further protect our account, we’re going to write a custom policy. This will only allow access to the specific buckets that we’re using in this application. Feel free to use the default S3 policy instead. 
+Here you have two choices - you can select “AmazonS3FullAccess” or you can create a custom policy. To further protect your account, you’re going to write a custom policy. This will only allow access to the specific buckets that you’re using in this application. Feel free to use the default S3 policy instead. 
 
-To create our custom policy, click “Create Policy.” This will be a new window that will allow us to specify our policy directly: 
+To create your custom policy, click “Create Policy.” This will be a new window that will allow us to specify your policy directly: 
 
 ![policy-window](/assets/uploads/policy-window.png)
 
@@ -183,7 +183,7 @@ The following custom policy will allow us to create keys that can only access sp
 
 This policy is separated into two parts because the list action is performed on the bucket itself and the put/get/delete actions are performed on objects *in* the bucket. 
 
-Next, we'll click through the “Next buttons” until we get to the “Name your policy” page. Give the policy a specific name and a description so we'll remember what it is! 
+Next, you'll click through the “Next buttons” until you get to the “Name your policy” page. Give the policy a specific name and a description so you'll remember what it is! 
 
 ![name-policy](/assets/uploads/name-policy.png)
 
@@ -191,21 +191,21 @@ Click on “Create Policy” to finalize the policy.
 
 ### Step 7:
 
-Once the policy has been created, we'll need to create API access keys for the IAM user we just created. 
+Once the policy has been created, you'll need to create API access keys for the IAM user you just created. 
 
-We should be directed to our IAM policy page. In the left-hand sidebar, click on “users” again.
+You should be directed to your IAM policy page. In the left-hand sidebar, click on “users” again.
 
-Click on the user we previously created, and select “Attach existing policies directly.” 
+Click on the user you previously created, and select “Attach existing policies directly.” 
 
 ![attach-existing-policies-directly](/assets/uploads/attach-directly.png)
 
-Check the policy that we just created (tutorial-bucket-policies), and click “Next: Tags,” then “Next: Review,” then “Create User.” 
+Check the policy that you just created (tutorial-bucket-policies), and click “Next: Tags,” then “Next: Review,” then “Create User.” 
 
-If this is successful, we'll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
+If this is successful, you'll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
 
 ![access-keys](/assets/uploads/access-keys.png)
 
-Quick reminder - we do not *ever* want to put our secret access key in plaintext in our application and push to Github (for example). If our keys are exposed, we can deactivate them and create new ones from the Users page. 
+Quick reminder - you do not *ever* want to put your secret access key in plaintext in your application and push to Github (for example). If your keys are exposed, you can deactivate them and create new ones from the Users page. 
 
 ## Add the AWS keys to your Rails credentials
 
@@ -223,7 +223,7 @@ Your editor will automatically open `credentials.yml`. Add the AWS keys you down
 
 ### Step 2:
 
-We’re going to add an Avatar to a User. Open `models/user.rb` and add `has_one_attached :avatar`. 
+You’re going to add an Avatar to a User. Open `models/user.rb` and add `has_one_attached :avatar`. 
 
 {% highlight ruby %}
 class User < ApplicationRecord
@@ -235,7 +235,7 @@ Navigate to the user form page: `app/views/users/_form.html.erb` and add a file 
 
 `<%= form.file_field :avatar %>`
 
-We'll have to whitelist the avatar parameter in the controller. Open `app/controllers/users_controller.rb` and add `avatar` to the whitelisted parameters. 
+You'll have to whitelist the avatar parameter in the controller. Open `app/controllers/users_controller.rb` and add `avatar` to the whitelisted parameters. 
 
 {% highlight ruby %}
     def user_params
@@ -243,7 +243,7 @@ We'll have to whitelist the avatar parameter in the controller. Open `app/contro
     end
 {% endhighlight %}
 
-We’ll also want to be able to see the file once it’s been uploaded, so let’s add an image tag to our users#show page. In `app/views/users/show` add 
+You’ll also want to be able to see the file once it’s been uploaded, so let’s add an image tag to your users#show page. In `app/views/users/show` add 
 <%= image_tag @user.avatar %>
 
 ### Step 3:
@@ -275,7 +275,7 @@ Add `direct_upload: true` to your file field.
 
 ### Step 3:
 
-To use direct uploads with S3, we'll need to configure the bucket to allow cross-origin requests or CORS from our application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
+To use direct uploads with S3, you'll need to configure the bucket to allow cross-origin requests or CORS from your application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
 
 Click on the “Permissions” header:
 
