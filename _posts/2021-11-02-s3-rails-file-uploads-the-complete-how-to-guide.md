@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "Direct Uploading to S3 on Heroku with Rails and Active Storage: The
+title: "Direct Rails File Uploads to S3 on Heroku with Active Storage: The
   Complete How-To Guide"
 date: 2021-11-02T14:15:04.195Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
