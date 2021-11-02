@@ -57,14 +57,14 @@ This tutorial uses S3, so you’ll need to add:
 
 Open `config/storage.yml` Storage.yml is a configuration file that describes what storage services Active Storage will use to store the uploaded files. This tutorial will use S3, so uncomment the S3 section: 
 
-```
+{% highlight ruby %}
 amazon:
   service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   region: us-east-1
   bucket: your_own_bucket
-```
+{% endhighlight %}
 
 You then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use Amazon for both development and production environments we’ll need to update  config/storage.yml to have two AWS environments. 
 
