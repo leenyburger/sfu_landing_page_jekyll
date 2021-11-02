@@ -180,10 +180,8 @@ The following custom policy will allow you to create keys that can only access s
           "arn:aws:s3:::tutorial-development-bucket/*",
           "arn:aws:s3:::tutorial-production-bucket/*"
           ]
-    }
-  ]
-}
-  ]
+      }
+   ]
 }
 {% endhighlight %}
 
