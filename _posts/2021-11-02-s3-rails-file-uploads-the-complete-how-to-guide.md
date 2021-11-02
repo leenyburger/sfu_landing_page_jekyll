@@ -97,7 +97,7 @@ In config/environments/development, add the following line:
 In config/environments/production, add the following line:
 `config.active_storage_service = :amazon_production`
 
-## How can you get your AWS credentials?
+## Set up your AWS credentials
 
 Now, you'll need to go to AWS services, create your cloud storage account, and set up your S3 buckets. If you have an existing account, go ahead and sign in. If you don’t have an existing account, go to aws.amazon.com and create a new account. 
 
