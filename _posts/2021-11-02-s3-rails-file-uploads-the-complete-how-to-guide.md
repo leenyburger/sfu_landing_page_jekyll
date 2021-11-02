@@ -15,18 +15,22 @@ permalink: rails-file-upload
 While this solution works fine for smaller files, it can cause issues on Heroku when trying to upload larger files. This is because Heroku uses an ephemeral file system, so the larger files may be deleted from the dyno before the files can be uploaded to S3. 
 
 ## What is the solution?
+
 One solution to this problem is “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploading means it doesn’t matter what the Heroku dynos do because the file never touches Heroku.
 
 ## How can we do this in Rails 6 and beyond?
+
 Active Storage was introduced as part of the Rails core in 6.1, and it is a good tool to use for direct uploading on Heroku. Let’s get started. 
 
 If you have an existing Rails application that needs direct uploading, jump to Step 3 to get right to the Active Storage code. Otherwise, we’ll scaffold a basic application to get started. 
 
 ### Step 1: 
+
 Set up a new Rails application in the folder of your choice. 
 `rails new direct_upload_example` `cd direct_upload_example` `bundle install` 
 
 ### Step 2: 
+
 At a minimum, we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files. 
 `rails g scaffold user name:string email:string`
 `bin/rails db:migrate`
@@ -37,6 +41,7 @@ Now, open the application to make sure it’s up and running:
 `rails s` and navigate to `http://localhost:3000/` - you should see the users index page. 
 
 ### Step 3: 
+
 Add Active Storage. Active storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
 
 Add active storage and run the migrations:
@@ -44,6 +49,7 @@ Add active storage and run the migrations:
 `bin/rails db:migrate` 
 
 ### Step 4: 
+
 Set up S3 and Active Storage credentials in `storage.yml` 
 
 This tutorial uses S3, so you’ll need to add: 
