@@ -68,7 +68,9 @@ amazon:
   bucket: your_own_bucket
 {% endhighlight %}
 
-We then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use AWS for both development and production environments, we’ll need to update `config/storage.yml` to have two AWS environments:
+We then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. 
+
+For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use AWS for both development and production environments, we’ll need to update `config/storage.yml` to have two AWS environments:
 
 {% highlight ruby %}
 amazon_development:
@@ -94,13 +96,17 @@ In config/environments/development, add the following line:
 In config/environments/production, add the following line:
 `config.active_storage_service = :amazon_production`
 
-## HOW TO GET YOUR AWS CREDENTIALS
+## How can we get our AWS credentials? 
 
-Now you’ll need to go to AWS services and create your cloud storage account and set up your S3 buckets. If you have an existing account, go ahead and sign in. If you don’t go aws.amazon.com and create a new account. 
+Now, we'll need to go to AWS services, create our cloud storage account, and set-up our S3 buckets. If you have an existing account, go ahead and sign-in. If you don’t have an exisiting account, go to aws.amazon.com and create a new account. 
 
-From the AWS console (once you have logged in) Click on “Services in the upper left-hand corner and then click on “S3”
+### Step 1: 
 
-Then click on “Create Bucket” 
+From the AWS console (once you have logged in), click on “Services" in the upper left-hand corner, and then click on “S3.” 
+
+### Step 2:
+
+Then click on “Create Bucket.” 
 
 ![aws-console-find-S3](/assets/uploads/aws_console_find_s3.png)
 
