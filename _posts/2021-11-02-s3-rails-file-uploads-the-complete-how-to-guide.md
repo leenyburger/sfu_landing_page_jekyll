@@ -37,10 +37,10 @@ At a minimum, we’ll need to add one model. We’ll create a user form with an 
 `rails g scaffold user name:string email:string`
 `bin/rails db:migrate`
 
-We’ll also need a root route so we don’t have to manually navigate to the users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
+We’ll also need a root route so we don’t have to manually navigate to the Users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
 
 Now, open the application to make sure it’s up and running: 
-`rails s` and navigate to `http://localhost:3000/` - you should see the users index page. 
+`rails s` and navigate to `http://localhost:3000/` - you should see the Users Index page. 
 
 ### Step 3:
 
@@ -98,7 +98,7 @@ In config/environments/production, add the following line:
 
 ## How can we get our AWS credentials?
 
-Now, we'll need to go to AWS services, create our cloud storage account, and set-up our S3 buckets. If you have an existing account, go ahead and sign-in. If you don’t have an exisiting account, go to aws.amazon.com and create a new account. 
+Now, we'll need to go to AWS services, create our cloud storage account, and set up our S3 buckets. If you have an existing account, go ahead and sign in. If you don’t have an existing account, go to aws.amazon.com and create a new account. 
 
 ### Step 1:
 
@@ -118,7 +118,7 @@ From the next screen enter the bucket name:
 
 ### Step 4:
 
-In this tutorial we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. We’ll modify the settings later, as needed. Click on “Create Bucket.” 
+In this tutorial, we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. We’ll modify the settings later, as needed. Click on “Create Bucket.” 
 
 ![create-new-bucket-page](/assets/uploads/create-new-bucket-page.png)
 
