@@ -3,52 +3,55 @@ layout: blog
 title: "S3 Rails File Uploads: The Complete How-To Guide"
 date: 2021-11-02T14:15:04.195Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
-excerpt: "This article describes how to upload files to S3 using Ruby on Rails
-  and AWS using direct uploading. In any Rails application the traditional way
-  to upload files is for the files to travel through the application and then
-  stream to S3. "
+excerpt: "This article describes how to use Ruby on Rails to upload files and
+  images to Amazon S3 (S3) on Heroku. In any Rails application, the traditional
+  way to upload files is for the files to travel through the application and
+  then stream to S3. This is the default behavior of many popular Ruby gems,
+  such as Paperclip, CarrierWave, and Active Storage.   While this solution
+  works fine for smaller files, it can cause issues on Heroku when trying to
+  upload larger files. This is because Heroku uses an ephemeral file system, so
+  the larger files may be deleted from the dyno before the files can be uploaded
+  to S3. "
 permalink: rails-file-upload
 ---
 {{page.excerpt}}
 
-This is the default behavior of many popular ruby gems such as Paperclip, CarrierWave, and Active Storage. However, this can cause problem on Heroku, because this solution works fine for smaller files, but can cause trouble on Heroku when dealing with larger files. This is because it is possible the larger files are deleted from the dyno before they can be uploaded to S3 due to Heroku’s ephemeral file system. 
+## What is the solution?
 
-\##What is the solution?## 
+One solution to this problem is “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploading means it doesn’t matter what the Heroku dynos do because the file never touches Heroku.
 
-One solution to this problem is called “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploading means it doesn’t matter what Heroku dynos do, because the file never touches Heroku.
+## How can we do this in Rails 6 and beyond?
 
-\##How to do this in Rails 6 and beyond?##
+Active Storage was introduced as part of the Rails core in 6.1, and it is a good tool to use for direct uploading on Heroku. Let’s get started. 
 
-Active Storage was introduced as part of Rails core in 6.1, and is a good tool to use for direct uploading on Heroku. Let’s get started. 
+If you have an existing Rails application that needs direct uploading, jump to Step 3 to get right to the Active Storage code. Otherwise, we’ll scaffold a basic application to get started. 
 
-If you have an existing Rails application that needs direct uploading, jump to Step \*\** to get right to the Active Storage code. Otherwise, we’ll scaffold a basic application to get started. 
-
-\*Step 1: Set up a new Rails application in the folder of your choice. 
+* Step 1: Set up a new Rails application in the folder of your choice. 
 `rails new direct_upload_example` `cd direct_upload_example` `bundle install` 
 
-\*Step 2: At a minimum we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files. 
-
+* Step 2: At a minimum, we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files. 
 `rails g scaffold user name:string email:string`
 `bin/rails db:migrate`
 
 We’ll also need a root route so we don’t have to manually navigate to the users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
 
-Now open the application to make sure it’s up and running: 
+Now, open the application to make sure it’s up and running: 
 `rails s` and navigate to `http://localhost:3000/` - you should see the users index page. 
 
-\*Step 3: Add Active Storage. Active storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
+* Step 3: Add Active Storage. Active storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
 
 Add active storage and run the migrations:
 `bin/rails active_storage:install` 
 `bin/rails db:migrate` 
 
-\*Step 4: Set up S3 and Active Storage credentials in `storage.yml` 
-This tutorial uses S3 so you’ll need to add 
-gem "aws-sdk-s3", require: false
-To your `Gemfile` and `bundle install` 
+* Step 4: Set up S3 and Active Storage credentials in `storage.yml` 
+
+This tutorial uses S3, so you’ll need to add: 
+gem "aws-sdk-s3", require: false to your `Gemfile` and `bundle install` 
 
 Open `config/storage.yml` 
-Storage.yml is a configuration file that described what storage services active storage will use to store the uploaded files. This tutorial will use S3, so uncomment the S3 section: 
+
+Storage.yml is a configuration file that describes what storage services Active Storage will use to store the uploaded files. This tutorial will use S3, so uncomment the S3 section: 
 
 ```
 amazon:
@@ -59,7 +62,7 @@ amazon:
   bucket: your_own_bucket
 ```
 
-You then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use Amazon for both development and production environments we’ll need to update  config/storage.yml to have two AWS environments. 
+You then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use Amazon for both development and production environments we’ll need to update  config/storage.yml to have two AWS environments. 
 
 ```
 amazon_development:
@@ -89,7 +92,7 @@ In config/environments/production:
 
 Now you’ll need to go to AWS services and create your cloud storage account and set up your S3 buckets. If you have an existing account, go ahead and sign in. If you don’t go aws.amazon.com and create a new account. 
 
-From the AWS console (once you have logged in) Click on “Services in the upper left hand corner and then click on “S3”
+From the AWS console (once you have logged in) Click on “Services in the upper left-hand corner and then click on “S3”
 
 Then click on “Create Bucket” 
 
@@ -109,27 +112,27 @@ In this tutorial we’ll set up the development bucket, the production bucket wi
 
 We’ll modify settings as necessary later. Click on “Create Bucket” 
 
-Next you’ll need to set up IAM credentials. You never want to use your root access credentials to create your API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll)
+Next, you’ll need to set up IAM credentials. You never want to use your root access credentials to create your API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll)
 
 ![find_iam](/assets/uploads/find_iam.png)
 
 CIRCLE IAM
 
-From the IAM dashboard, click on users in the left hand side navigation bar
+From the IAM dashboard, click on Users in the left-hand side navigation bar
 
 Click on “Add Users” to add a new IAM user. 
 
 Add a User name - this tutorial is using the name “tutorial-user”
 
-You then have the choice to set programatic access and/or console access. These API keys will be used by active storage to upload files, so we only need programatic access here. 
+You then have the choice to set programmatic access and/or console access. These API keys will be used by active storage to upload files, so we only need programmatic access here. 
 
 ![add-user-page](/assets/uploads/add-user-page.png)
 
 Click on next-permissions 
 
-Here you have two choices - you can select “AmazonS3FullAccess” or you can create a custom policy. In order to further protect our account we’re going to write a custom policy to only allow access to the specific buckets we’re using in this application. Feel free to use the default S3 policy instead. 
+Here you have two choices - you can select “AmazonS3FullAccess” or you can create a custom policy. To further protect our account, we’re going to write a custom policy to only allow access to the specific buckets we’re using in this application. Feel free to use the default S3 policy instead. 
 
-To create the further secure policy, click “Create Policy”. This will only a new window that allows you to specify your policy directly: 
+To create the further secure policy, click “Create Policy”. This will only be a new window that allows you to specify your policy directly: 
 
 ![policy-window](/assets/uploads/policy-window.png)
 
@@ -175,7 +178,7 @@ Click on “Create Policy” to finalize the policy.
 
 Once the policy has been created, you’ll need to create API access keys for the IAM user you just created. 
 
-You should be directed to your IAM policy page. In the left hand sidebar, click on “users” again.
+You should be directed to your IAM policy page. In the left-hand sidebar, click on “users” again.
 
 Click on the user you previously created, and select “Attach existing policies directly” 
 
@@ -183,7 +186,7 @@ Click on the user you previously created, and select “Attach existing policies
 
 Check the policy you just created (tutorial-bucket-policies) and Click “Next: Tags”, then “Next: Review” “Create User” 
 
-If this is successfully, you’ll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
+If this is successful, you’ll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
 
 ![access-keys](/assets/uploads/access-keys.png)
 
@@ -200,7 +203,7 @@ EDITOR='code --wait' bin/rails credentials:edit
 Example: If using sublime text 
 EDITOR='sublime --wait' bin/rails credentials:edit
 
-Your editor will automatically open `credentials.yml`. Add the AWS keys your downloaded earlier to this file, and close the editor. You can view the credentials at any time using 
+Your editor will automatically open `credentials.yml`. Add the AWS keys you downloaded earlier to this file, and close the editor. You can view the credentials at any time using 
 `bin/rails credentials:show`
 
 We’re going to add an Avatar to a User. Open `models/user.rb` and add `has_one_attached :avatar`. 
@@ -249,13 +252,13 @@ Add `direct_upload: true` to your file field.
  <%= form.file_field :avatar, direct_upload: true %>
 ```
 
-In order to use direct uploads with S3, you’ll need to configure the bucket to allow cross-origin requests or CORS from your application. This done by adding a bucket policy to the bucket. Sign into your AWS account and navigate to your bucket.
+To use direct uploads with S3, you’ll need to configure the bucket to allow cross-origin requests or CORS from your application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
 
 Click on the “Permissions” header:
 
 ![select-bucket-permissions](/assets/uploads/select_bucket_permissions.png)
 
-Scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowedorigins must be an exact domain match - in this example “http://localhost:3000/" would fail because of the additional backslash. 
+Scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowed origins must be an exact domain match - in this example, “http://localhost:3000/" would fail because of the additional backslash. 
 
 ```
 [
@@ -280,5 +283,5 @@ Scroll down to the “CORS policy” section (past the bucket policy section). A
 ]
 ```
 
-Save the policy and return to your rails application. 
+Save the policy and return it to your rails application. 
 Upload a file, and the file should directly upload to s3!
