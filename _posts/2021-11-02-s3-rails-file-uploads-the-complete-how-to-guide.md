@@ -9,7 +9,7 @@ excerpt: "This article describes how to upload files to S3 using Ruby on Rails
   stream to S3. "
 permalink: rails-file-upload
 ---
-This article describes how to upload files to S3 using Ruby on Rails and AWS using direct uploading. In any Rails application the traditional way to upload files is for the files to travel through the application and then stream to S3. 
+{{page.excerpt}}
 
 This is the default behavior of many popular ruby gems such as Paperclip, CarrierWave, and Active Storage. However, this can cause problem on Heroku, because this solution works fine for smaller files, but can cause trouble on Heroku when dealing with larger files. This is because it is possible the larger files are deleted from the dyno before they can be uploaded to S3 due to Heroku’s ephemeral file system. 
 
