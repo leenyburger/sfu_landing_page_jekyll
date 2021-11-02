@@ -68,7 +68,7 @@ amazon:
   bucket: your_own_bucket
 {% endhighlight %}
 
-You then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use Amazon for both development and production environments we’ll need to update  config/storage.yml to have two AWS environments. 
+We then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use AWS for both development and production environments, we’ll need to update `config/storage.yml` to have two AWS environments:
 
 {% highlight ruby %}
 amazon_development:
@@ -86,12 +86,12 @@ amazon_production:
   bucket: tutorial-production-bucket
 {% endhighlight %}
 
-Now we’ll need to tell Rails when to use each environment.
+Now, we’ll need to tell Rails when to use each environment.
 
-In config/environments/development add the following line: 
+In config/environments/development, add the following line: 
 `config.active_storage_service = :amazon_development`
 
-In config/environments/production:
+In config/environments/production, add the following line:
 `config.active_storage_service = :amazon_production`
 
 ## HOW TO GET YOUR AWS CREDENTIALS
