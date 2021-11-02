@@ -27,25 +27,25 @@ If you have an existing Rails application that needs direct uploading, jump to S
 
 ### Step 1:
 
-Set up a new Rails application in the folder of your choice. 
+Set up a new Rails application in the folder of your choice: 
 `rails new direct_upload_example` `cd direct_upload_example` `bundle install` 
 
 ### Step 2:
 
-At a minimum, we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files. 
+At a minimum, we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files: 
 `rails g scaffold user name:string email:string`
 `bin/rails db:migrate`
 
 We’ll also need a root route so we don’t have to manually navigate to the Users page. In your editor of choice, open `routes.rb` and add `root to: “users#index"`
 
-Now, open the application to make sure it’s up and running: 
+Open the application to make sure it’s up and running: 
 `rails s` and navigate to `http://localhost:3000/` - you should see the Users Index page. 
 
 ### Step 3:
 
-Add Active Storage. Active storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
+Add Active Storage. Active Storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
 
-Add active storage and run the migrations:
+Add Active Storage and run the migrations:
 `bin/rails active_storage:install` 
 `bin/rails db:migrate` 
 
@@ -67,9 +67,11 @@ amazon:
   bucket: your_own_bucket
 {% endhighlight %}
 
+### Step 5:
+
 We then need to tell Rails when to use each environment. It is highly recommended to use different environments for development and production. 
 
-For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Because we want to use AWS for both development and production environments, we’ll need to update `config/storage.yml` to have two AWS environments:
+For this example, we will use S3 for both development and production to test the uploading and confirm files are placed in the correct bucket. Since we want to use AWS for both development and production environments, we’ll need to update `config/storage.yml` to have two AWS environments:
 
 {% highlight ruby %}
 amazon_development:
@@ -87,7 +89,7 @@ amazon_production:
   bucket: tutorial-production-bucket
 {% endhighlight %}
 
-Now, we’ll need to tell Rails when to use each environment.
+Next, we’ll need to tell Rails when to use each environment.
 
 In config/environments/development, add the following line: 
 `config.active_storage_service = :amazon_development`
@@ -103,47 +105,43 @@ Now, we'll need to go to AWS services, create our cloud storage account, and set
 
 From the AWS console (once you have logged in), click on “Services" in the upper left-hand corner, and then click on “S3.” 
 
+![aws-console-find-S3](/assets/uploads/aws_console_find_s3.png)
+
 ### Step 2:
 
 Click on “Create Bucket.” 
 
-![aws-console-find-S3](/assets/uploads/aws_console_find_s3.png)
+![aws-new-bucket](/assets/uploads/aws_new_bucket.png)
 
 ### Step 3:
 
 From the next screen enter the bucket name: 
 
-![aws-new-bucket](/assets/uploads/aws_new_bucket.png)
-
-### Step 4:
-
-In this tutorial, we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. We’ll modify the settings later, as needed. Click on “Create Bucket.” 
-
 ![create-new-bucket-page](/assets/uploads/create-new-bucket-page.png)
 
-### Step 5:
+In this tutorial, we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. We’ll modify the settings later, as needed. 
+
+### Step 4:
 
 Next, we'll need to set up IAM credentials. We never want to use our root access credentials to create our API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll).
 
 ![find-iam](/assets/uploads/find_iam.png)
 
-From the IAM dashboard, click on "Users" in the left-hand side navigation bar.
-
-Click on “Add Users” to add a new IAM user. 
+From the IAM dashboard, click on "Users" in the left-hand side navigation bar. Click on “Add Users” to add a new IAM user. 
 
 ![click-on-add-users](/assets/uploads/click_on_add_users.png)
 
-### Step 6:
+### Step 5:
 
-Add a User name - this tutorial is using the name “tutorial-user.”
+Add a User name - this tutorial is using the name “tutorial-user.” 
 
-We then have the choice to set programmatic access and/or console access. These API keys will be used by active storage to upload files, so we only need programmatic access here. 
+We then have the choice to set programmatic access and/or console access. These API keys will be used by Active Storage to upload files, so we only need programmatic access here. 
+
+Then, click on "Next-Permissions."
 
 ![add-user-page](/assets/uploads/add-user-page.png)
 
-Click on "Next-Permissions." 
-
-### Step 7:
+### Step 6:
 
 Here we have two choices - we can select “AmazonS3FullAccess” or we can create a custom policy. To further protect our account, we’re going to write a custom policy. This will only allow access to the specific buckets that we’re using in this application. Feel free to use the default S3 policy instead. 
 
@@ -185,7 +183,7 @@ The following custom policy will allow us to create keys that can only access sp
 
 This policy is separated into two parts because the list action is performed on the bucket itself and the put/get/delete actions are performed on objects *in* the bucket. 
 
-Now, we'll click through the “Next buttons” until we get to the “Name your policy” page. Give the policy a specific name and a description so we'll remember what it is! 
+Next, we'll click through the “Next buttons” until we get to the “Name your policy” page. Give the policy a specific name and a description so we'll remember what it is! 
 
 ![name-policy](/assets/uploads/name-policy.png)
 
@@ -209,7 +207,7 @@ If this is successful, we'll now be on a screen that provides access keys. Downl
 
 Quick reminder - we do not *ever* want to put our secret access key in plaintext in our application and push to Github (for example). If our keys are exposed, we can deactivate them and create new ones from the Users page. 
 
-## How do we add the AWS keys to our Rails credentials?
+## Add the AWS keys to your Rails credentials
 
 ### Step 1:
 
@@ -256,9 +254,7 @@ Now start up your rails server `rails s`, add an image, and see it upload to S3!
 
 If you look at the network log, you’ll see two requests. One to your server and one to S3. 
 
-GET NETWORK REQUEST SCREEN SHOT (network_request_normal_upload)
-
-Direct uploads remove this requirement and put the file directly onto S3. There are a few steps to add direct uploading to your application. 
+Direct uploads remove this requirement and put the file directly onto S3. There are just a few steps to add direct uploading to your application. 
 
 ### Step 1:
 
@@ -269,13 +265,15 @@ import * as ActiveStorage from "@rails/activestorage"
 ActiveStorage.start()
 {% endhighlight %}
 
+### Step 2:
+
 Add `direct_upload: true` to your file field. 
 
 {% highlight ruby %}
  <%= form.file_field :avatar, direct_upload: true %>
 {% endhighlight %}
 
-### Step 2:
+### Step 3:
 
 To use direct uploads with S3, we'll need to configure the bucket to allow cross-origin requests or CORS from our application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
 
