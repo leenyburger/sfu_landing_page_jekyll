@@ -125,13 +125,13 @@ In this tutorial, we’ll set up the development bucket. Note that the productio
 
 Next, we'll need to set up IAM credentials. We never want to use our root access credentials to create our API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll).
 
-![find_iam](/assets/uploads/find_iam.png)
+![find-iam](/assets/uploads/find_iam.png)
 
 From the IAM dashboard, click on "Users" in the left-hand side navigation bar.
 
 Click on “Add Users” to add a new IAM user. 
 
-![click_on_add_users](/assets/uploads/click_on_add_users.png)
+![click-on-add-users](/assets/uploads/click_on_add_users.png)
 
 ### Step 6:
 
@@ -143,7 +143,7 @@ We then have the choice to set programmatic access and/or console access. These 
 
 Click on "Next-Permissions." 
 
-### Step 7: 
+### Step 7:
 
 Here we have two choices - we can select “AmazonS3FullAccess” or we can create a custom policy. To further protect our account, we’re going to write a custom policy. This will only allow access to the specific buckets that we’re using in this application. Feel free to use the default S3 policy instead. 
 
@@ -199,7 +199,7 @@ We should be directed to our IAM policy page. In the left-hand sidebar, click on
 
 Click on the user we previously created, and select “Attach existing policies directly.” 
 
-![attach-directly](/assets/uploads/attach-directly.png)
+![attach-existing-policies-directly](/assets/uploads/attach-directly.png)
 
 Check the policy that we just created (tutorial-bucket-policies), and click “Next: Tags,” then “Next: Review,” then “Create User.” 
 
@@ -212,6 +212,7 @@ Quick reminder - we do not *ever* want to put our secret access key in plaintext
 ## How do we add the AWS keys to our Rails credentials?
 
 ### Step 1:
+
 Open the Rails credentials file to edit using the following (replace “code” with your editor of choice):
 
 EDITOR='code --wait' bin/rails credentials:edit
@@ -222,7 +223,8 @@ EDITOR='sublime --wait' bin/rails credentials:edit
 Your editor will automatically open `credentials.yml`. Add the AWS keys you downloaded earlier to this file, and close the editor. You can view the credentials at any time using: 
 `bin/rails credentials:show`
 
-### Step 2: 
+### Step 2:
+
 We’re going to add an Avatar to a User. Open `models/user.rb` and add `has_one_attached :avatar`. 
 
 {% highlight ruby %}
@@ -247,6 +249,7 @@ We’ll also want to be able to see the file once it’s been uploaded, so let�
 <%= image_tag @user.avatar %>
 
 ### Step 3:
+
 Now start up your rails server `rails s`, add an image, and see it upload to S3! 
 
 ## Add direct uploading to your application
@@ -258,6 +261,7 @@ GET NETWORK REQUEST SCREEN SHOT (network_request_normal_upload)
 Direct uploads remove this requirement and put the file directly onto S3. There are a few steps to add direct uploading to your application. 
 
 ### Step 1:
+
 Add `activestorage.js` to your application. Depending on when you created your Rails application, it may already be included. To use the npm package in `app/javascript/packs/application.js` add:
 
 {% highlight ruby %}
@@ -272,6 +276,7 @@ Add `direct_upload: true` to your file field.
 {% endhighlight %}
 
 ### Step 2:
+
 To use direct uploads with S3, we'll need to configure the bucket to allow cross-origin requests or CORS from our application. This is done by adding a bucket policy to the bucket. Sign in to your AWS account and navigate to your bucket.
 
 Click on the “Permissions” header:
@@ -305,4 +310,4 @@ Scroll down to the “CORS policy” section (past the bucket policy section). A
 
 Save the policy and return it to your rails application. Upload a file, and the file should directly upload to S3!
 
-While this is an effective solution to Rails file uploads on Heroku, it is still a complicated and time-consuming process. This is why we created Simple File Upload, a widget that allows you to integrate file uploads into your website in minutes. No heavy lifting is required. Try it free for 7 days! 
+While this is an effective solution to Rails file uploads on Heroku, it is still a complicated and time-consuming process. This is why we created Simple File Upload, a widget that allows you to integrate file uploads into your website in minutes. No heavy lifting is required. Try it free for 7 days!
