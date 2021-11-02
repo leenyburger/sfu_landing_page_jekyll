@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "S3 Rails File Uploads: The Complete How-To Guide"
+title: "Rails File Uploads to S3 on Heroku: The Complete How-To Guide"
 date: 2021-11-02T14:15:04.195Z
 thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
 excerpt: This article describes how to use Ruby on Rails to upload files and
@@ -8,14 +8,14 @@ excerpt: This article describes how to use Ruby on Rails to upload files and
   way to upload files is for the files to travel through the application and
   then stream to S3. This is the default behavior of many popular Ruby gems,
   such as Paperclip, CarrierWave, and Active Storage. However, is this the best
-  solution for file uploading on Heroku?
+  solution for Rails file uploads to S3 on Heroku?
 permalink: rails-file-upload
 ---
 {{page.excerpt}}
 
 While this solution works fine for smaller files, it can cause issues on Heroku when trying to upload larger files. This is because Heroku uses an ephemeral file system, so the larger files may be deleted from the dyno before the files can be uploaded to S3. 
 
-## What is the solution?
+## What is the solution to Rails file uploads on Heroku?
 
 One solution to this problem is “direct uploads." A direct upload is when the file is uploaded from the Client (browser) directly to S3. Direct uploading means it doesn’t matter what the Heroku dynos do because the file never touches Heroku.
 
@@ -304,3 +304,5 @@ Scroll down to the “CORS policy” section (past the bucket policy section). A
 {% endhighlight %}
 
 Save the policy and return it to your rails application. Upload a file, and the file should directly upload to S3!
+
+While this is an effective solution to Rails file uploads on Heroku, it is still a complicated and time-consuming process. This is why we created Simple File Upload, a widget that allows you to integrate file uploads into your website in minutes. No heavy lifting is required. Try it free for 7 days! 
