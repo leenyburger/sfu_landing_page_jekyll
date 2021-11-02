@@ -213,10 +213,10 @@ Quick reminder - you do not *ever* want to put your secret access key in plainte
 
 Open the Rails credentials file to edit using the following (replace “code” with your editor of choice):
 
-EDITOR='code --wait' bin/rails credentials:edit
+`EDITOR='code --wait' bin/rails credentials:edit`
 
 Example: If using sublime text 
-EDITOR='sublime --wait' bin/rails credentials:edit
+`EDITOR='sublime --wait' bin/rails credentials:edit`
 
 Your editor will automatically open `credentials.yml`. Add the AWS keys you downloaded earlier to this file, and close the editor. You can view the credentials at any time using: 
 `bin/rails credentials:show`
@@ -242,7 +242,7 @@ You'll have to whitelist the avatar parameter in the controller. Open `app/contr
 {% endhighlight %}
 
 You’ll also want to be able to see the file once it’s been uploaded, so let’s add an image tag to your users#show page. In `app/views/users/show` add 
-<%= image_tag @user.avatar %>.
+`<%= image_tag @user.avatar %>`.
 
 ### Step 3:
 
@@ -250,7 +250,7 @@ Now start up your Rails server `rails s`, add an image, and see it upload to S3!
 
 ## Add direct uploads to your application
 
-If you look at the network log, you’ll see two requests. One to your server and one to S3. Direct uploads remove this requirement and put the file directly onto S3. There are just a few steps to add direct uploads to your application. 
+Now let's change this upload architecture to use direct uploads. There are just a few steps to add direct uploads to your application. 
 
 ### Step 1:
 
