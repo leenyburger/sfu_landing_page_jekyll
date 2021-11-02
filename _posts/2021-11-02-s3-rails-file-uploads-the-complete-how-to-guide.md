@@ -7,14 +7,12 @@ excerpt: "This article describes how to use Ruby on Rails to upload files and
   images to Amazon S3 (S3) on Heroku. In any Rails application, the traditional
   way to upload files is for the files to travel through the application and
   then stream to S3. This is the default behavior of many popular Ruby gems,
-  such as Paperclip, CarrierWave, and Active Storage.   While this solution
-  works fine for smaller files, it can cause issues on Heroku when trying to
-  upload larger files. This is because Heroku uses an ephemeral file system, so
-  the larger files may be deleted from the dyno before the files can be uploaded
-  to S3. "
+  such as Paperclip, CarrierWave, and Active Storage. "
 permalink: rails-file-upload
 ---
 {{page.excerpt}}
+
+While this solution works fine for smaller files, it can cause issues on Heroku when trying to upload larger files. This is because Heroku uses an ephemeral file system, so the larger files may be deleted from the dyno before the files can be uploaded to S3. 
 
 ## What is the solution?
 
