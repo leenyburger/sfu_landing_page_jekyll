@@ -26,12 +26,12 @@ Active Storage was introduced as part of the Rails core in 6.1, and it is a good
 
 If you have an existing Rails application that needs direct uploading, jump to Step 3 to get right to the Active Storage code. Otherwise, we’ll scaffold a basic application to get started. 
 
-### Step 1: 
+### Step 1:
 
 Set up a new Rails application in the folder of your choice. 
 `rails new direct_upload_example` `cd direct_upload_example` `bundle install` 
 
-### Step 2: 
+### Step 2:
 
 At a minimum, we’ll need to add one model. We’ll create a user form with an avatar. Use the scaffold generator to create the necessary files. 
 `rails g scaffold user name:string email:string`
@@ -42,7 +42,7 @@ We’ll also need a root route so we don’t have to manually navigate to the us
 Now, open the application to make sure it’s up and running: 
 `rails s` and navigate to `http://localhost:3000/` - you should see the users index page. 
 
-### Step 3: 
+### Step 3:
 
 Add Active Storage. Active storage uses three tables in your application’s database named `active_storage_blobs`, `active_storage_variant_records` and `active_storage_attachments`. 
 
@@ -50,7 +50,7 @@ Add active storage and run the migrations:
 `bin/rails active_storage:install` 
 `bin/rails db:migrate` 
 
-### Step 4: 
+### Step 4:
 
 Set up S3 and Active Storage credentials in `storage.yml` 
 
@@ -96,11 +96,11 @@ In config/environments/development, add the following line:
 In config/environments/production, add the following line:
 `config.active_storage_service = :amazon_production`
 
-## How can we get our AWS credentials? 
+## How can we get our AWS credentials?
 
 Now, we'll need to go to AWS services, create our cloud storage account, and set-up our S3 buckets. If you have an existing account, go ahead and sign-in. If you don’t have an exisiting account, go to aws.amazon.com and create a new account. 
 
-### Step 1: 
+### Step 1:
 
 From the AWS console (once you have logged in), click on “Services" in the upper left-hand corner, and then click on “S3.” 
 
@@ -118,15 +118,11 @@ From the next screen enter the bucket name:
 
 ### Step 4:
 
-In this tutorial we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values.
+In this tutorial we’ll set up the development bucket. Note that the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values. We’ll modify the settings later, as needed. Click on “Create Bucket.” 
 
 ![create-new-bucket-page](/assets/uploads/create-new-bucket-page.png)
 
-We’ll modify the settings later, as needed. 
-
-Click on “Create Bucket” 
-
-### Step 5: 
+### Step 5:
 
 Next, we'll need to set up IAM credentials. We never want to use our root access credentials to create our API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll).
 
@@ -136,17 +132,23 @@ From the IAM dashboard, click on "Users" in the left-hand side navigation bar.
 
 Click on “Add Users” to add a new IAM user. 
 
-Add a User name - this tutorial is using the name “tutorial-user”
+![click_on_add_users](/assets/uploads/click_on_add_users.png)
 
-You then have the choice to set programmatic access and/or console access. These API keys will be used by active storage to upload files, so we only need programmatic access here. 
+### Step 6:
+
+Add a User name - this tutorial is using the name “tutorial-user.”
+
+We then have the choice to set programmatic access and/or console access. These API keys will be used by active storage to upload files, so we only need programmatic access here. 
 
 ![add-user-page](/assets/uploads/add-user-page.png)
 
-Click on next-permissions 
+Click on "Next-Permissions." 
 
-Here you have two choices - you can select “AmazonS3FullAccess” or you can create a custom policy. To further protect our account, we’re going to write a custom policy to only allow access to the specific buckets we’re using in this application. Feel free to use the default S3 policy instead. 
+### Step 7: 
 
-To create the further secure policy, click “Create Policy”. This will only be a new window that allows you to specify your policy directly: 
+Here we have two choices - we can select “AmazonS3FullAccess” or we can create a custom policy. To further protect our account, we’re going to write a custom policy. This will only allow access to the specific buckets that we’re using in this application. Feel free to use the default S3 policy instead. 
+
+To create our custom policy, click “Create Policy.” This will be a new window that will allow us to specify our policy directly: 
 
 ![policy-window](/assets/uploads/policy-window.png)
 
@@ -155,18 +157,18 @@ The following custom policy will allow us to create keys that can only access sp
 {% highlight ruby %}
 {
   "Version": "2012-10-17",
-  "Statement": [
+  "Statement": \[
     {
       "Effect": "Allow",
       "Action": ["s3:ListBucket"],
-      "Resource": [
+      "Resource": \[
           "arn:aws:s3:::tutorial-development-bucket",
           "arn:aws:s3:::tutorial-production-bucket"
         ]
     },
     {
       "Effect": "Allow",
-      "Action": [
+      "Action": \[
         "s3:PutObject",
         "s3:GetObject",
         "s3:DeleteObject"
@@ -182,29 +184,31 @@ The following custom policy will allow us to create keys that can only access sp
 }
 {% endhighlight %}
 
-This policy is separated into two parts because the List action is performed on the bucket itself and the put/get/delete actions are performed on objects *in* the bucket. 
+This policy is separated into two parts because the list action is performed on the bucket itself and the put/get/delete actions are performed on objects *in* the bucket. 
 
-Click through the “Next buttons” until you get to the “Name your policy” page. Give the policy a specific name and a description so you’ll remember what it is! 
+Now, we'll click through the “Next buttons” until we get to the “Name your policy” page. Give the policy a specific name and a description so we'll remember what it is! 
 
 ![name-policy](/assets/uploads/name-policy.png)
 
 Click on “Create Policy” to finalize the policy. 
 
-Once the policy has been created, you’ll need to create API access keys for the IAM user you just created. 
+### Step 7:
 
-You should be directed to your IAM policy page. In the left-hand sidebar, click on “users” again.
+Once the policy has been created, we'll need to create API access keys for the IAM user we just created. 
 
-Click on the user you previously created, and select “Attach existing policies directly” 
+We should be directed to our IAM policy page. In the left-hand sidebar, click on “users” again.
+
+Click on the user we previously created, and select “Attach existing policies directly.” 
 
 ![attach-directly](/assets/uploads/attach-directly.png)
 
-Check the policy you just created (tutorial-bucket-policies) and Click “Next: Tags”, then “Next: Review” “Create User” 
+Check the policy that we just created (tutorial-bucket-policies), and click “Next: Tags,” then “Next: Review,” then “Create User.” 
 
-If this is successful, you’ll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
+If this is successful, we'll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
 
 ![access-keys](/assets/uploads/access-keys.png)
 
-Quick reminder - do not *ever* put your secret access key in plaintext in your application and push to Github (for example). If your keys are exposed you can deactivate them and create new ones from the Users page. 
+Quick reminder - we do not *ever* want to put our secret access key in plaintext in our application and push to Github (for example). If our keys are exposed, we can deactivate them and create new ones from the Users page. 
 
 ## RETURN TO RAILS APP
 
@@ -275,18 +279,18 @@ Click on the “Permissions” header:
 Scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowed origins must be an exact domain match - in this example, “http://localhost:3000/" would fail because of the additional backslash. 
 
 {% highlight ruby %}
-[
+\[
     {
         "AllowedHeaders": [
             "*"
         ],
-        "AllowedMethods": [
+        "AllowedMethods": \[
             "PUT"
         ],
-        "AllowedOrigins": [
+        "AllowedOrigins": \[
             "http://localhost:3000"
         ],
-        "ExposeHeaders": [
+        "ExposeHeaders": \[
             "Origin",
             "Content-Type",
             "Content-MD5",
