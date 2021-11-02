@@ -153,7 +153,7 @@ Here you have two choices - you can select “AmazonS3FullAccess” or you can c
 
 To create your custom policy, click “Create Policy.” This will be a new window that will allow you to specify your policy directly: 
 
-![policy-window](/assets/uploads/policy-window.png)
+![policy-window](/assets/uploads/tutorial_bucket_policy_full.png)
 
 The following custom policy will allow you to create keys that can only access specified buckets: 
 
