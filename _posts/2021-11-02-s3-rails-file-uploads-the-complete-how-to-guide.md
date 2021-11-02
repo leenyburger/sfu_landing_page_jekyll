@@ -92,20 +92,28 @@ Now you’ll need to go to AWS services and create your cloud storage account an
 From the AWS console (once you have logged in) Click on “Services in the upper left hand corner and then click on “S3”
 
 Then click on “Create Bucket” 
-(aws_console_find_s3 CIRCLE S3
+
+![aws-console-find-S3](/assets/uploads/aws_console_find_s3.png)
+
+CIRCLE S3
 
 From the next screen enter the bucket name. 
-(aws_new_bucket - CIRCLE/POINT TO create_bucket)
+
+![aws-new-bucket](/assets/uploads/aws_new_bucket.png)
+
+CIRCLE/POINT TO create_bucket
 
 In this tutorial we’ll set up the development bucket, the production bucket will be set up in the same way. For now, add the bucket name and region and leave the rest of the settings on the default values.
 
-(create_new_bucket_page) 
+![create-new-bucket-page](/assets/uploads/create-new-bucket-page.png)
 
 We’ll modify settings as necessary later. Click on “Create Bucket” 
 
 Next you’ll need to set up IAM credentials. You never want to use your root access credentials to create your API keys for security reasons. To create an IAM user, navigate to Services -> IAM  (you’ll have to scroll)
 
-(find_iam CIRCLE IAM)
+![find_iam](/assets/uploads/find_iam.png)
+
+CIRCLE IAM
 
 From the IAM dashboard, click on users in the left hand side navigation bar
 
@@ -115,7 +123,7 @@ Add a User name - this tutorial is using the name “tutorial-user”
 
 You then have the choice to set programatic access and/or console access. These API keys will be used by active storage to upload files, so we only need programatic access here. 
 
-(Add-user-page) 
+![add-user-page](/assets/uploads/add-user-page.png)
 
 Click on next-permissions 
 
@@ -123,7 +131,7 @@ Here you have two choices - you can select “AmazonS3FullAccess” or you can c
 
 To create the further secure policy, click “Create Policy”. This will only a new window that allows you to specify your policy directly: 
 
-(Policy-window)
+![policy-window](/assets/uploads/policy-window.png)
 
 The following custom policy will allow us to create keys that can only access specified buckets. 
 
@@ -161,7 +169,7 @@ This policy is separated into two parts because the List action is performed on 
 
 Click through the “Next buttons” until you get to the “Name your policy” page. Give the policy a specific name and a description so you’ll remember what it is! 
 
-(Name-policy)
+![name-policy](/assets/uploads/name-policy.png)
 
 Click on “Create Policy” to finalize the policy. 
 
@@ -171,13 +179,13 @@ You should be directed to your IAM policy page. In the left hand sidebar, click 
 
 Click on the user you previously created, and select “Attach existing policies directly” 
 
-(Attach-directly)
+![attach-directly](/assets/uploads/attach-directly.png)
 
 Check the policy you just created (tutorial-bucket-policies) and Click “Next: Tags”, then “Next: Review” “Create User” 
 
 If this is successfully, you’ll now be on a screen that provides access keys. Download these keys and save them somewhere safe!
 
-![]()
+![access-keys](/assets/uploads/access-keys.png)
 
 Quick reminder - do not *ever* put your secret access key in plaintext in your application and push to Github (for example). If your keys are exposed you can deactivate them and create new ones from the Users page. 
 
@@ -224,7 +232,7 @@ Now start up your rails server `rails s`, add an image, and see it upload to S3!
 
 If you look at the network log, you’ll see two requests. One to your server and one to S3. 
 
-GET NETWORK REQUEST SCREEN SHOW (network_request_normal_upload)
+GET NETWORK REQUEST SCREEN SHOT (network_request_normal_upload)
 
 Direct uploads remove this requirement and put the file directly onto S3. There are a few steps to add direct uploading to your application. 
 
@@ -243,7 +251,11 @@ Add `direct_upload: true` to your file field.
 
 In order to use direct uploads with S3, you’ll need to configure the bucket to allow cross-origin requests or CORS from your application. This done by adding a bucket policy to the bucket. Sign into your AWS account and navigate to your bucket.
 
-Click on the “Permissions” header, (select_bucket_permissions). and scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowedorigins must be an exact domain match - in this example “http://localhost:3000/" would fail because of the additional backslash. 
+Click on the “Permissions” header:
+
+![select-bucket-permissions](/assets/uploads/select_bucket_permissions.png)
+
+Scroll down to the “CORS policy” section (past the bucket policy section). Add the following policy. Change “AllowedOrigins” to be whatever domain you want to upload from. Remember, the allowedorigins must be an exact domain match - in this example “http://localhost:3000/" would fail because of the additional backslash. 
 
 ```
 [
