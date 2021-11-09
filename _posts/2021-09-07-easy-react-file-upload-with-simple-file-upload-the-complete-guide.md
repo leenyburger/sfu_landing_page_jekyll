@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "Easy React File Uploads with Simple File Upload: The Complete Guide "
+title: "Easy React File Uploads with Simple File Upload: The Complete How-To Guide "
 date: 2021-09-07T14:54:30.991Z
 thumbnail: /assets/uploads/react_photo.png
 excerpt: "What would you say are the two most difficult things to do in
