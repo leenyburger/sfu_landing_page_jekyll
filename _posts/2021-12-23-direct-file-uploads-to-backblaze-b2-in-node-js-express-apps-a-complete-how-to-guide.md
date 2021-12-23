@@ -156,11 +156,11 @@ In the "Buckets" tab of the console, select "Create a Bucket".
 
 In the dialog that opens, enter a name for your bucket and enable any of the other settings you may need. Then click "Create a Bucket" to complete the process. Please note that bucket names must be unique. Make a note of your bucket name, as you'll need this later.
 
-![The "Create a Bucket" interface on B2](image3.png)
+![The "Create a Bucket" interface on B2](/assets/uploads/image3.png)
 
 Once the bucket is created, it will be added to the list of buckets on your account. At this stage, make a note of the "Endpoint" displayed for the bucket, as you'll need this later.
 
-![Finding the "Endpoint" URL for your bucket](image4.png)
+![Finding the "Endpoint" URL for your bucket](/assets/uploads/image4.png)
 
 ### Step 5: Creating access credentials
 
@@ -170,19 +170,19 @@ In the Backblaze console, navigate to the "App Keys" tab. Here, we will create t
 
 Firstly, create the "management" key. To do so, click the "Add a New Application Key" button on this page.
 
-![Showing the "Add a New Application Key" button](image5.png)
+![Showing the "Add a New Application Key" button](/assets/uploads/image5.png)
 
 On the dialog that pops up, enter a name for your key and ensure the key has read/write access to all buckets.
 
-![Creating a new management key](image6.png)
+![Creating a new management key](/assets/uploads/image6.png)
 
 Once created, the console will display the `keyID` and `applicationKey` for your new "management" key. Make a note of these as you'll need them later and they only get displayed once.
 
-![Finding the keyId and applicationKey](image7.png)
+![Finding the keyId and applicationKey](/assets/uploads/image7.png)
 
 Next, create the key for your application (we'll call this the "application" key). Go through the "Add a New Application Key" process again, but this time restrict the key's access to just the bucket you created earlier.
 
-![Creating a new application key](image8.png)
+![Creating a new application key](/assets/uploads/image8.png)
 
 Make a note of the `keyId` and `applicationKey` for this "application" key as above.
 
@@ -255,11 +255,11 @@ npm start
 
 Navigate to [localhost:3000](http://localhost:3000) again to view the new application version, which should look something like the following image.
 
-![The completed application UI](image9.png)
+![The completed application UI](/assets/uploads/image9.png)
 
 Use the file input to select a file, and then browse the bucket contents on the B2 console and you should see the file listed.
 
-![Showing the uploaded file on the B2 console](image10.png)
+![Showing the uploaded file on the B2 console](/assets/uploads/image10.png)
 
 ## If things go wrong
 
