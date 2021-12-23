@@ -9,7 +9,8 @@ excerpt: "This article describes how to use Node.js to power direct upload
   PAAS such as Heroku due to the ephemeral file system. "
 permalink: node-file-uploads-on-heroku
 ---
-By: Will Webberley
+<p align="center">By: Will Webberley</p>
+
 This article describes how to use Node.js to power direct upload functionality to a Backblaze B2 bucket.
 
 B2 is an S3-compatible object storage service, which means that the approach described in this article can largely be applied to other S3-compatible services too, such as Amazon S3, Linode Object Storage, and DigitalOcean Spaces.
