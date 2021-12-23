@@ -3,7 +3,7 @@ layout: blog
 title: "Direct Rails File Uploads to S3 on Heroku with Active Storage: The
   Complete How-To Guide"
 date: 2021-11-02T14:15:04.195Z
-thumbnail: /assets/uploads/undraw_code_review_re_woeb.png
+thumbnail: /assets/uploads/undraw_cloud_hosting_aodd.png
 excerpt: "This article describes how to use Ruby on Rails to upload files and
   images to Amazon S3 on Heroku. In any Rails application, the traditional way
   to upload files is for the files to travel through the application and then
