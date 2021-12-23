@@ -42,25 +42,26 @@ Firstly, ensure your system’s Node.js and NPM installations are up-to-date.
 Then, in your terminal, create a new directory for your Express project and change into it:
 
 ```shell
-
+mkdir projects/express-b2
+cd projects/express-b2
 ```
 
 Use the `express-generator` tool to scaffold your app:
 
 ```shell
-
+npx express-generator
 ```
 
 A number of files and directories will be created. You can now install the required dependencies:
 
 ```shell
-
+npm install
 ```
 
 Finally, you can test your app by running it:
 
 ```shell
-
+npm start
 ```
 
 Navigate to [localhost:3000](http://localhost:3000) in your web browser and you should see a page that looks like the following.
@@ -76,7 +77,19 @@ The Express generator created some "view" files for you, which can be found in t
 Rather than creating a whole new view, you can just modify the existing primary index route. To do so, open up `views/index.jade` and add the following to the bottom of the file (inside the `content` block):
 
 ```jade
+ h2 Upload a file
+  input(type="file")
 
+  script.
+    document.querySelector('input').onchange = async (event) => {
+      const file = event.target.files[0];
+      const response = await fetch(`http://localhost:3000/signed-request?name=${file.name}`);
+      const { url } = await response.json();
+      fetch(url, {
+        method: 'PUT',
+        body: file
+      });
+    }
 ```
 
 This code renders a basic file input, and the script then attaches an `onchange` listener for the input.
@@ -92,19 +105,35 @@ In order for the browser to upload directly to B2, it needs to use *signed reque
 To generate the signed request you can make use of AWS' SDK for working with S3-compatible object storage services. Add the required dependency to your project:
 
 ```shell
-
+npm install aws-sdk
 ```
 
 Next, open up the file `routes/index.js` in your project to add a new route definition. This route will accept information about the file to be uploaded and return a signed request that will enable the browser to complete the upload. Near the top of the file (next to the other imports) import the package we installed earlier:
 
 ```javascript
-
+var AWS = require('aws-sdk');
 ```
 
 Then create the route at the bottom of the same file:
 
 ```javascript
+router.get('/signed-request', function(req, res, next) {
+  var endpoint = new AWS.Endpoint(process.env.B2_ENDPOINT_URL);
+  var s3 = new AWS.S3({
+    endpoint,
+    accessKeyId: process.env.B2_KEY_ID,
+    secretAccessKey: process.env.B2_APPLICATION_KEY,
+    signatureVersion: 'v4',
+  });
 
+  var url = s3.getSignedUrl('putObject', {
+    Bucket: process.env.B2_BUCKET,  // Bucket name (from environment)
+    Key: req.query.name,            // File name (from client request)
+    Expires: 60,                    // Request expires in 60 seconds
+  });
+
+  res.json({ url });
+});
 ```
 
 Broadly, the code above performs the following:
@@ -168,7 +197,7 @@ To begin, download the B2 tool for your system from the [Backblaze website](http
 Login to your B2 account by running the following:
 
 ```shell
-
+b2 authorize-account
 ```
 
 You will be prompted for a key ID and an application key. For these use the details from the "management" key you created in Step 5.
@@ -176,6 +205,15 @@ You will be prompted for a key ID and an application key. For these use the deta
 Once you've authenticated the tool you can use it to set the CORS settings for the bucket. To do so, issue the following command:
 
 ```shell
+b2 update-bucket --corsRules '[
+  {
+      "corsRuleName": "allowBrowserPut",
+      "allowedOrigins": ["*"],
+      "allowedHeaders": ["*"],
+      "allowedOperations": ["s3_put"],
+      "maxAgeSeconds": 3600
+  }
+]' <bucket name> allPublic
 
 ```
 
@@ -192,7 +230,10 @@ The final step in the setup involves configuring the environment variables acces
 Create a new file named `envfile` in the root of your Node Express project and add these contents, replacing the values with those noted above:
 
 ```
-
+export B2_ENDPOINT_URL="s3.eu-central-003.backblazeb2.com"
+export B2_BUCKET="tutorial-bucket"
+export B2_KEY_ID="xxxyyyzzz"
+export B2_APPLICATION_KEY="aaabbbccc111222333"
 ```
 
 If you manage your environment variables differently in your application, then instead simply drop them into your existing setup. Either way, we recommend not including your environment variables in your source control system since each of your environments (development, production, etc.) will likely have different variables.
@@ -204,13 +245,13 @@ If your terminal is still running your application, then exit it first by pressi
 Next, load the environment variables you created earlier:
 
 ```shell
-
+source envfile
 ```
 
 Finally, you can run the application again:
 
 ```shell
-
+npm start
 ```
 
 Navigate to [localhost:3000](http://localhost:3000) again to view the new application version, which should look something like the following image.
