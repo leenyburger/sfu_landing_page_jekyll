@@ -152,7 +152,7 @@ Firstly, login to your Backblaze B2 account console by visiting [backblaze.com](
 
 In the "Buckets" tab of the console, select "Create a Bucket".
 
-![Showing the "Create a Bucket" button](image2.png)
+![Showing the "Create a Bucket" button](/assets/uploads/image2.png)
 
 In the dialog that opens, enter a name for your bucket and enable any of the other settings you may need. Then click "Create a Bucket" to complete the process. Please note that bucket names must be unique. Make a note of your bucket name, as you'll need this later.
 
@@ -214,7 +214,6 @@ b2 update-bucket --corsRules '[
       "maxAgeSeconds": 3600
   }
 ]' <bucket name> allPublic
-
 ```
 
 You'll need to change `<bucket name>` to the name of the bucket you created in Step 4. You may also wish to change the other attributes of the CORS rules, such as the allowed origins or operations, depending on your required level of security and the scope of usage for this bucket.
