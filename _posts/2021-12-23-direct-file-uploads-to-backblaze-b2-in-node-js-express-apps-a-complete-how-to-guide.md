@@ -192,7 +192,9 @@ Cross-origin resource sharing (CORS) needs to be configured on your bucket in or
 
 The CORS configuration you need on this bucket needs to be managed using the B2 API, and for this we recommend making use of the official `b2` tool.
 
-To begin, download the B2 tool for your system from the [Backblaze website](https://www.backblaze.com/b2/docs/quick_command_line.html). Rename the downloaded file to `b2` and move it to a sensible place. You'll need to mark it as executable (if you use MacOS or Linux) by running `chmod +x /path/to/b2` on the downloaded file. For the rest of this article we'll assume that the `b2` tool is available in your path and can be invoked simply using the `b2` command.
+To begin, download the B2 tool for your system from the [Backblaze website](https://www.backblaze.com/b2/docs/quick_command_line.html). You can also use Homebrew on Mac: 
+`brew install b2-tools`
+Rename the downloaded file to `b2` and move it to a sensible place. You'll need to mark it as executable (if you use MacOS or Linux) by running `chmod +x /path/to/b2` on the downloaded file. For the rest of this article we'll assume that the `b2` tool is available in your path and can be invoked simply using the `b2` command.
 
 Login to your B2 account by running the following:
 
