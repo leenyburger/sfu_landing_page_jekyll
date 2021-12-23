@@ -270,3 +270,5 @@ If the file doesn't upload, then we recommend checking your browser console or t
 ## Conclusion
 
 In this article we have discussed an approach to achieving basic direct-to-B2 uploads in a Node.js application. Whilst the finished product does not feature additional useful UX enhancements (such as loading indicators or upload previews and confirmations), the technical process for implementing an upload system should provide enough guidance for including such a mechanism in your own applications.
+
+While this is an effective solution to Node file uploads on Heroku, it does not provide a visual drag-and-drop interface, client side image resizing, or automatic backups. This is why we created Simple File Upload, a widget that allows you to integrate file uploads into your website in minutes and handles all these things! No heavy lifting is required. Try it free for 7 days!
